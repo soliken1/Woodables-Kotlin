@@ -1,0 +1,27 @@
+<!-- button_background.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- When button is focused -->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <!-- Change the color below to the desired focused color -->
+            <solid android:color="#FF5722" />
+            <!-- You can add more attributes here like corner radius, stroke, etc. -->
+        </shape>
+    </item>
+    <!-- When button is pressed -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <!-- Change the color below to the desired pressed color -->
+            <solid android:color="#FFC107" />
+            <!-- You can add more attributes here like corner radius, stroke, etc. -->
+        </shape>
+    </item>
+    <!-- Default state -->
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Change the color below to the desired default color -->
+            <solid android:color="#3F51B5" />
+            <!-- You can add more attributes here like corner radius, stroke, etc. -->
+        </shape>
+    </item>
+</selector>

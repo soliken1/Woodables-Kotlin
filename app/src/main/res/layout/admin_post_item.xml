@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:padding="16dp"
+    android:background="#FFFFFF"
+    android:radius="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/darkgrey" />
+
+        <TextView
+            android:id="@+id/userNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkgrey" />
+
+        <TextView
+            android:id="@+id/messageTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/darkgrey" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:text="Delete"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="@color/red" />
+
+            <Button
+                android:id="@+id/approveButton"
+                android:layout_width="120dp"
+                android:layout_marginLeft="50dp"
+                android:layout_height="40dp"
+                android:text="Approve"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="@color/blue" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

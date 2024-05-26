@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#161804"
+    tools:context=".VideoActivity">
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="610dp"
+        android:paddingTop="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:background="@drawable/gradient"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/leftarrow"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/left_arrow"/>
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/pfp2"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/profile_corners"
+                android:clipToOutline="true"
+                tools:ignore="UnusedAttribute"
+                android:contentDescription="@string/pfp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="50dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/drippy"
+                android:background="@drawable/smoothedges"
+                android:clipToOutline="true"
+                tools:ignore="UnusedAttribute"
+                android:contentDescription="@string/drippy_lab" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="60dp"
+                android:background="@drawable/smoothedges"
+                android:clipToOutline="true"
+                android:contentDescription="@string/krusty_krab_project"
+                android:src="@drawable/krustykrab"
+                tools:ignore="UnusedAttribute,ImageContrastCheck" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/smoothedges"
+                android:clipToOutline="true"
+                android:contentDescription="@string/dollar_speed"
+                android:src="@drawable/dollar"
+                tools:ignore="UnusedAttribute,ImageContrastCheck" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/boom"
+                android:background="@drawable/smoothedges"
+                android:clipToOutline="true"
+                tools:ignore="UnusedAttribute"
+                android:contentDescription="@string/max_win"
+                android:layout_marginEnd="60dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="40dp"
+                android:src="@drawable/arrowdown"
+                android:contentDescription="@string/left_arrow" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical"
+            android:layout_marginTop="130dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_marginTop="-10dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/drippy"
+                    android:background="@drawable/profile_corners"
+                    android:clipToOutline="true"
+                    tools:ignore="UnusedAttribute"
+                    android:contentDescription="@string/drippy_lab"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/spartan"
+                    android:textSize="14sp"
+
+                    android:text="@string/msg3"
+                    android:letterSpacing="0.01"
+                    android:textColor="@color/white">
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_marginTop="45dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/dollar"
+                    android:background="@drawable/profile_corners"
+                    android:clipToOutline="true"
+                    tools:ignore="UnusedAttribute"
+                    android:contentDescription="@string/weebify_project"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/spartan"
+                    android:text="@string/dollar_pls"
+                    android:letterSpacing="0.01"
+                    android:textSize="14sp"
+
+                    android:textColor="@color/white">
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_marginTop="100dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/pfp2"
+                    android:background="@drawable/profile_corners"
+                    android:clipToOutline="true"
+                    tools:ignore="UnusedAttribute"
+                    android:contentDescription="@string/weebify_project"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/spartan"
+                    android:textSize="14sp"
+                    android:text="@string/msg1"
+                    android:letterSpacing="0.01"
+                    android:textColor="@color/white">
+                </TextView>
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:autofillHints=""
+                android:background="@drawable/sendmsg"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="20dp"
+                android:text="@string/msg"
+                android:textColor="#8d8d8d"
+                android:textSize="14sp"
+                tools:ignore="LabelFor" />
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="9dp"
+                android:layout_marginEnd="50dp"
+                android:src="@drawable/paperplane_w"
+                android:contentDescription="@string/message">
+            </ImageView>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="-2dp"
+            android:contentDescription="@string/home"
+            android:src="@drawable/home" />
+
+        <ImageView
+            android:id="@+id/chat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="-2dp"
+            android:contentDescription="@string/message"
+            android:src="@drawable/chat" />
+
+        <ImageView
+            android:id="@+id/hammer"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="-2dp"
+            android:contentDescription="@string/woodworker"
+            android:src="@drawable/hammer" />
+
+        <ImageView
+            android:id="@+id/messenger"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="-2dp"
+            android:contentDescription="@string/message"
+            android:src="@drawable/messenger" />
+
+        <ImageView
+            android:id="@+id/documents"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="-2dp"
+            android:contentDescription="@string/listing"
+            android:src="@drawable/approve" />
+    </LinearLayout>
+</LinearLayout>

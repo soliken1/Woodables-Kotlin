@@ -1,0 +1,63 @@
+<!-- post_item.xml -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/listing"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="10dp">
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/rounded_corners"
+        android:clipToOutline="true"
+        android:contentDescription="@string/logo"
+        android:cropToPadding="true"
+        android:src="@drawable/catprofile"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/postusername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="w/User1209"
+        android:textStyle="bold"
+        android:layout_alignTop="@id/profileImage"
+        android:layout_toEndOf="@id/profileImage"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:textAlignment="center"
+        android:layout_marginRight="50dp"
+        android:text="Harold's Bad day at the Company A - A WoodWorker Sentiment"
+        android:textStyle="bold"
+        android:layout_below="@id/profileImage"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas euismod urna non enim viverra, eu lobortis nulla fringilla. Pellentesque nibh ligula, lacinia ut eleifend in, ullamcorper nec odio"
+        android:layout_below="@id/title"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/black"/>
+
+</RelativeLayout>

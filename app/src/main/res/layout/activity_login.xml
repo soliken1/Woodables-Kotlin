@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".LoginActivity"
+    android:background="@drawable/startupbkg">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/transpa"
+        android:elevation="10dp">
+
+        <LinearLayout
+            android:id="@+id/loginlabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/login"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/login_to_continue" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/loginform"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_below="@id/loginlabel"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/cola"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:text="Email" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:inputType="textEmailAddress"
+                android:elevation="4dp"
+                android:background="@drawable/textbox_4curvedcorners"
+                android:textColor="@color/black"
+                android:hint="Enter Email"
+                android:autofillHints="" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/cola"
+                android:textStyle="bold"
+                android:text="@string/password" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="250dp"
+                android:hint="@string/enter_password"
+                android:inputType="textPassword"
+                android:layout_height="48dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:elevation="4dp"
+                android:background="@drawable/textbox_4curvedcorners"
+                android:textColor="@color/black"/>
+
+            <Button
+                android:id="@+id/toprofilelogin"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/cinnamon"
+                android:text="@string/login"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:layout_below="@id/loginform"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/forgotpassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forgot_password"
+                android:textColor="#2437e7"
+                android:textStyle="bold"
+                android:clickable="true"/>
+
+            <TextView
+                android:id="@+id/register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register_here"
+                android:textColor="#2437e7"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:clickable="true" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

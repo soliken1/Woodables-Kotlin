@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1079799657648",
+    "project_id": "woodablesauth",
+    "storage_bucket": "woodablesauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079799657648:android:71308239f06ad24448b775",
+        "android_client_info": {
+          "package_name": "com.intprog.woodablesapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDBH-D68YMlLv6hsyxqaIMshV5_9_m73A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

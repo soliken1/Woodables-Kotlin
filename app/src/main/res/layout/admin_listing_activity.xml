@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:padding="16dp"
+    android:background="#FFFFFF"
+    android:radius="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/companyNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company Name" />
+
+        <TextView
+            android:id="@+id/jobTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job Title" />
+
+        <TextView
+            android:id="@+id/payRangeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pay Range" />
+
+        <TextView
+            android:id="@+id/detailsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details" />
+
+        <TextView
+            android:id="@+id/requirements1TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Requirements 1" />
+
+        <TextView
+            android:id="@+id/requirements2TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Requirements 2" />
+
+        <TextView
+            android:id="@+id/requirements3TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Requirements 3" />
+
+        <TextView
+            android:id="@+id/hasBenefitsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Has Benefits" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:text="Delete"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="@color/red"
+                />
+
+            <Button
+                android:id="@+id/approveButton"
+                android:layout_width="120dp"
+                android:layout_marginLeft="50dp"
+                android:layout_height="40dp"
+                android:text="Approve"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="@color/blue"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

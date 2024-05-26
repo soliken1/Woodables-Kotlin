@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkgrey"
+    android:id="@+id/mainlayout"
+    tools:context=".CreatePostActivity">
+
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+       android:src="@drawable/close"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"/>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/prof"
+        android:layout_width="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/close"
+        android:src="@drawable/tzuyuu"
+        android:background="@drawable/rounded_img"/>
+
+    <EditText
+        android:id="@+id/titletxt"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="80dp"
+        android:textStyle="bold"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
+        android:fontFamily="@font/spartan_medium"
+        android:gravity="center"
+        android:hint="Create Post (Title here)"/>
+
+    <EditText
+        android:id="@+id/contenttxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/prof"
+        android:backgroundTint="@color/white"
+        android:inputType="text"
+        android:textColor="@color/white"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:textColorHint="@color/white"
+        android:fontFamily="@font/spartan_medium" />
+    <EditText
+        android:id="@+id/contenttxt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contenttxt"
+        android:inputType="text"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:textColorHint="@color/white"
+        android:fontFamily="@font/spartan_medium" />
+
+    <ImageView
+        android:id="@+id/toCamera"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/whitecamera"
+        />
+
+    <ImageView
+        android:id="@+id/toGallery"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:padding="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/toCamera"
+        android:src="@drawable/whitegallery"
+        />
+    <Button
+        android:id="@+id/postbtn"
+        android:layout_width="120dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Post"
+        android:backgroundTint="@color/cinnamon"/>
+
+</RelativeLayout>

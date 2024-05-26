@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:gravity="center"
+    android:background="@drawable/startupbkg">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="40dp"
+        android:background="@color/transpa"
+        android:elevation="10dp">
+
+        <TextView
+            android:id="@+id/createacctext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/create_new_account"
+            android:textColor="@color/cola"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/createacctext"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/cola"
+                android:textStyle="bold"
+                android:text="Email"/>
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="266dp"
+                android:layout_height="48dp"
+                android:hint="Enter email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:background="@drawable/textbox_4curvedcorners"
+                android:elevation="4dp"
+                android:textColor="@color/black"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/password"
+                android:textColor="@color/cola"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="266dp"
+                android:layout_height="48dp"
+                android:hint="@string/enter_password"
+                android:inputType="textPassword"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:background="@drawable/textbox_4curvedcorners"
+                android:elevation="4dp"
+                android:textColor="@color/black"
+                tools:ignore="LabelFor" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/alredyregtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/already_registered" />
+
+                <TextView
+                    android:id="@+id/loginhere"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:layout_weight="1"
+
+                    android:text="@string/login_here"
+                    android:textColor="#2437e7"
+                    android:textStyle="bold"
+                    android:clickable="true"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/regclick"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/cinnamon"
+            android:textColor="@color/white"
+            android:text="@string/register"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+</RelativeLayout>

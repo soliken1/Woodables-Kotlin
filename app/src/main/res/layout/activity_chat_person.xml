@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!-- Header layout with back arrow, profile image, and name -->
+    <LinearLayout
+        android:id="@+id/chat_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/blackleftarrow"/>
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:src="@drawable/woodableslogo"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bluebg_color"/>
+
+        <TextView
+            android:id="@+id/receiverUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/darkgrey"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:src="@drawable/calliconblack"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            />
+
+
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D9D9D9"
+        android:layout_marginTop="2dp"/>
+
+    <!-- Scroll view for chat messages -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/messageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+    <!-- Input area for new messages -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"> <!-- Change to desired background color -->
+
+        <ImageView
+            android:id="@+id/plus_button"
+            android:layout_width="52dp"
+            android:layout_height="48dp"
+            android:src="@drawable/plusicon"
+            android:layout_marginTop="5dp"
+            android:contentDescription="Add image or doc"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/message_input"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:hint="Type a message"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:background="@drawable/textbox_4curvedcorners"
+            android:textColor="@android:color/black"
+            />
+
+        <ImageView
+            android:id="@+id/send_button"
+            android:layout_width="52dp"
+            android:layout_height="48dp"
+            android:src="@drawable/sendicon"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:contentDescription="Send message"
+            android:padding="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>

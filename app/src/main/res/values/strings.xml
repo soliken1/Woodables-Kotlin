@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">Woodables</string>
+    <string name="create_new_account">Register</string>
+    <string name="already_registered">Already Registered?</string>
+    <string name="login_here">Login Here</string>
+    <string name="are_you_a">Are you A?</string>
+    <string name="client">CLIENT</string>
+    <string name="woodworker">WOODWORKER</string>
+    <string name="username">Username</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_last_name">Enter Last Name</string>
+    <string name="first_name">FIRST NAME</string>
+    <string name="last_name">LAST NAME</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="enter_middle_name_optional">Enter Middle Name (Optional)</string>
+    <string name="gender">GENDER</string>
+    <string name="male">MALE</string>
+    <string name="female">FEMALE</string>
+    <string name="rather_not_say">RATHER NOT SAY</string>
+    <string name="birthdate">BIRTHDATE</string>
+    <string name="mm_dd_yy">mm/dd/yy</string>
+    <string name="age">AGE</string>
+    <string name="enter_your_age">Enter Your Age</string>
+    <string name="address">ADDRESS</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="mobile_number">MOBILE NUMBER</string>
+    <string name="_63">+63</string>
+    <string name="register">Create new Account</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="register_here">Register Here</string>
+    <string name="login_to_continue">Login To Continue</string>
+    <string name="description">UNITE BUILD INSPIRE</string>
+    <string name="chats">Chats</string>
+    <string name="left_arrow">Left Arrow</string>
+    <string name="pfp">Profile Picture</string>
+    <string name="search">Search</string>
+    <string name="menu">Menu</string>
+    <string name="home">Home</string>
+    <string name="message">Message</string>
+    <string name="listing">listing</string>
+    <string name="all">All</string>
+    <string name="direct">Direct</string>
+    <string name="project_discussion">Discussions</string>
+    <string name="woodables_team">Woodables Team</string>
+    <string name="bjorg_thank_you">Bjorg: Thank You!</string>
+    <string name="logo">Logo</string>
+    <string name="krusty_krab_project">Krusty Krab Project</string>
+    <string name="patrick">Patrick: Hey AJ whats the...</string>
+    <string name="weebify_project">Weebify Project</string>
+    <string name="message1">Ken: Yo, I need the outpu...</string>
+    <string name="hazzaf_aladeen">Hazzaf Aladeen</string>
+    <string name="message2">Hazzaf: Can you visit to the..</string>
+    <string name="message3">Amabatu: Did you finish the...</string>
+    <string name="amabatu_basst">Amabatu Basst</string>
+    <string name="anita_max_wynn">Anita Max Wynn</string>
+    <string name="message4">Anita: This is my alter ego</string>
+    <string name="forgot_pass">Enter Email</string>
+    <string name="recover">Recover my Account</string>
+    <string name="listing_view">Listing View</string>
+    <string name="filter">Filter</string>
+    <string name="apply">Apply</string>
+    <string name="save">Save</string>
+    <string name="interested">Interested</string>
+    <string name="anita_project">Anita Project</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus elementum pulvinar mi at gravida. Duis diam ipsum, pharetra at ultricies non, auctor nec velit.</string>
+    <string name="job_title_wood_bustas_project">Wood Bustas Project</string>
+    <string name="drippy_lab">Drippy Lab</string>
+    <string name="dollar_speed">dollarspeed</string>
+    <string name="max_win">max win</string>
+    <string name="msg">Write Your Message Here</string>
+    <string name="msg1">Hello! How Are You?</string>
+    <string name="dollar_pls">Can i have a dollar please?</string>
+    <string name="msg3">When are you coming back?</string>
+    <string name="krustykrabprof">Krusty Crab Co.</string>
+    <string name="sampleLongText">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices mattis odio.
+        Integer ullamcorper nulla sed consectetur vestibulum. Donec rutrum congue leo eget malesuada.
+        Nulla justo libero, sit amet facilisis nisl sed euismod in hac habitasse platea dictumst.
+        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+        Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam.
+        Pellentesque lorem quam, pede libero cursus neque, eget faucibus tortor neque eu erat.
+        Aliquam erat volutpat.
+    </string>
+    <string name="companykrusty">Company</string>
+    <string name="aj_von">Aj Von Krieger</string>
+    <string name="adv_carpenter">Advance Carpenter</string>
+    <string name="visitortext">69 Unique Profile Visitors</string>
+    <string name="introtext">Intro</string>
+    <string name="project_ratings">4.8 out of 5.0 Job and Project Ratings</string>
+    <string name="freelance_carpenter">Freelance Carpenter at 3di s4 pus0 mo..</string>
+    <string name="former_carpenter">Former Carpenter at Company A</string>
+    <string name="studied_in">Studied Carpentry Mastering at TESDA Region VII</string>
+    <string name="completed_selflearning">Completed a Self-learning course for Advance Carpentry at Woodables Learning Course System</string>
+    <string name="City_b">From City B.</string>
+    <string name="joined">Joined 2023</string>
+    <string name="setting">settings</string>
+    <string name="profilebg">profilebg</string>
+    <string name="editprofilephoto">editphoto</string>
+    <string name="verified">verified</string>
+    <string name="opento">Open to</string>
+    <string name="edit_prof">Edit Profile</string>
+    <string name="dotdot">...</string>
+    <string name="saveprofile">Save Profile</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

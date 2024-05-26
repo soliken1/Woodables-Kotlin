@@ -1,0 +1,9 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF"/> <!-- Change to desired background color -->
+    <corners android:radius="75dp"/> <!-- Change to half the size of your ImageView -->
+    <stroke
+        android:width="2dp"
+
+        android:color="#FFFFFF"/>
+    <solid android:color="#339AF0"/>
+</shape>

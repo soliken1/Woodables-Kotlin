@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".AssessmentActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/cinnamon"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/backbutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:padding="10dp"
+            android:background="@color/cinnamon"
+            android:src="@drawable/leftarrow" />
+
+        <ImageView
+            android:id="@+id/applogo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:padding="5dp"
+            android:background="@color/cinnamon"
+            android:src="@drawable/woodableslogo" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text="Assess my Skills"
+            android:gravity="center_vertical"
+            android:textColor="@color/darkgrey"
+            android:textStyle="bold"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Schedule an Appointment today!"
+            android:textAlignment="center"
+            android:textColor="@color/darkgrey"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:elevation="4dp"
+        android:background="@drawable/textbox_4curvedcornerswhite">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="You wish to get verified and assess your skills with the Woodables Resident Experts? Fill out the form and get verified, as soons as possible."
+            android:textAlignment="textStart"
+            android:textColor="@color/darkgrey"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/assesslName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center"
+            android:background="@drawable/input_border"
+            android:hint="@string/enter_last_name"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColorHint="@color/darkgrey"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/assessfName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center"
+            android:background="@drawable/input_border"
+            android:hint="@string/enter_first_name"
+            android:padding="10dp"
+            android:inputType="text"
+            android:textColorHint="@color/darkgrey"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/assessmName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center"
+            android:background="@drawable/input_border"
+            android:hint="@string/enter_middle_name_optional"
+            android:padding="10dp"
+            android:inputType="text"
+            android:textColorHint="@color/darkgrey"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/assessExpertise"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center"
+            android:background="@drawable/input_border"
+            android:hint="Field of Expertise"
+            android:padding="10dp"
+            android:inputType="text"
+            android:textColorHint="@color/darkgrey"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/assesDOA"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center"
+            android:background="@drawable/input_border"
+            android:hint="mm/dd/yy"
+            android:padding="10dp"
+            android:inputType="date"
+            android:textColorHint="@color/darkgrey"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor" />
+
+        <Button
+            android:id="@+id/bookBtn"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/cinnamon"
+            android:text="BOOK NOW"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

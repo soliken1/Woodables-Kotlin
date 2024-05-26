@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProfileClientActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/headerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/cinnamon"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/backbutton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/leftarrow"
+                    android:background="@color/cinnamon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:padding="10dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="General Information"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:padding="10dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="Edit User Profile"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="10dp"
+                    android:background="#808080" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:id="@+id/profilepicture"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/default_profile"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/rounded_corners"
+                        android:clipToOutline="true"
+                        android:contentDescription="@string/logo"
+                        android:cropToPadding="true"
+                        android:scaleType="centerCrop"/>
+
+                    <ImageView
+                        android:id="@+id/camerlogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/camera"
+                        android:padding="3dp"
+                        android:background="@drawable/rounded_corners"
+                        android:backgroundTint="@color/cola"
+                        android:clickable="true"
+                        android:layout_centerHorizontal="true"
+                        android:contentDescription="@string/editprofilephoto"
+                        android:layout_alignEnd="@+id/profilepicture"
+                        android:layout_alignBottom="@+id/profilepicture"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/spartan_medium"
+                        android:text="First Name"/>
+
+                    <EditText
+                        android:id="@+id/editFirstName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/textbox_4curvedcorners"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/spartan_medium"
+                        android:text="Last Name"/>
+
+                    <EditText
+                        android:id="@+id/editLastName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="4"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/textbox_4curvedcorners"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/spartan_medium"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:text="Middle Name" />
+
+                    <EditText
+                        android:id="@+id/editMiddleName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/textbox_4curvedcorners"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/companyname"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/spartan_medium"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:text="Company Name" />
+
+                    <EditText
+                        android:id="@+id/editCompanyName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/textbox_4curvedcorners"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:padding="10dp"
+                android:fontFamily="@font/spartan_medium"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:text="Profile Description"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="10dp"
+                android:background="#808080" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="0dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:textColor="@color/black"
+                    android:text="Profile Desc 2"/>
+
+                <EditText
+                    android:id="@+id/profileDesc2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="Profile Desc 3"/>
+
+                <EditText
+                    android:id="@+id/profileDesc3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="Profile Desc 4"/>
+
+                <EditText
+                    android:id="@+id/profileDesc4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="Profile Desc 5"/>
+
+                <EditText
+                    android:id="@+id/profileDesc5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="Profile Desc 6"/>
+
+                <EditText
+                    android:id="@+id/profileDesc6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="Profile Desc 7"/>
+
+                <EditText
+                    android:id="@+id/profileDesc7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/saveEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/cinnamon"
+                android:text="@string/saveprofile"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
+

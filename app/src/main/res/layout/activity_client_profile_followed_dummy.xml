@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="150dp"
+    android:layout_gravity="center"
+    android:background="@drawable/popupdialogbkg">
+
+    <TextView
+        android:id="@+id/followingName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:text="You Are Following User1"/>
+
+    <Button
+        android:id="@+id/confirmbtn"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/followingName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="Confirm" />
+
+
+</RelativeLayout>

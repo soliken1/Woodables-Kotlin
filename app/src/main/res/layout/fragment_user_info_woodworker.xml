@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserInfoWoodworkerFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userType"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_name"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/lName"
+            android:layout_width="266dp"
+            android:layout_height="48dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="@drawable/textbox_4curvedcorners"
+            android:hint="@string/enter_last_name"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/first_name"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/fName"
+            android:layout_width="266dp"
+            android:layout_height="48dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="@drawable/textbox_4curvedcorners"
+            android:hint="@string/enter_first_name"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textSize="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MIDDLE NAME"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/mName"
+            android:layout_width="266dp"
+            android:layout_height="48dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="@drawable/textbox_4curvedcorners"
+            android:hint="@string/enter_middle_name_optional"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textSize="16dp"/>
+
+        <Button
+            android:id="@+id/toregbtn"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/cola"
+            android:textColor="@color/white"
+            android:text="Next"/>
+
+
+    </LinearLayout>
+
+
+
+</FrameLayout>
