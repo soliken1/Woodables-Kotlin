@@ -13,26 +13,22 @@
 
 
 
+
         <LinearLayout
             android:id="@+id/searchbargroup"
             android:layout_width="match_parent"
-            android:background="@color/cinnamon"
             android:layout_height="55dp"
             android:orientation="horizontal">
 
-            <SearchView
-                android:id="@+id/searchBarProfile"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_weight="3"
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:text="Job Listings"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/darkgrey"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/textbox_4curvedcorners"
-                android:backgroundTint="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="5dp"/>
-
-
+                android:layout_marginLeft="20dp"/>
 
             <ImageView
                 android:id="@+id/profilepicture"
@@ -40,7 +36,7 @@
                 android:layout_width="35dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="5dp"
                 android:src="@drawable/default_profile"
                 android:background="@drawable/profile_corners"
                 android:layout_centerVertical="true"
@@ -52,46 +48,32 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <SearchView
+                android:id="@+id/searchBarProfile"
+                android:layout_width="350dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/searchview_corners"
+                android:backgroundTint="@color/greywhite"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dp"/>
+
+        </LinearLayout>
+
+
+
         <View
             android:id="@+id/breaklinetop"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_below="@+id/searchbargroup"
             android:background="@color/white" />
-
-        <RelativeLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/spartan_bold"
-                android:paddingTop="4dp"
-                android:textStyle="bold"
-                android:text="@string/listing_view"
-                android:textAlignment="center"
-                android:textColor="@color/darkgrey"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="30dp"
-                android:contentDescription="@string/filter"
-                android:src="@drawable/filterwhite" />
-        </RelativeLayout>
-
 
         <ScrollView
             android:layout_width="match_parent"

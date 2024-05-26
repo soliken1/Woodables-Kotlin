@@ -41,8 +41,10 @@ class AdminPostFragment : Fragment() {
                         val title = document.getString("title")
                         val message = document.getString("message")
                         val userName = document.getString("userName")
+                        val status = document.getString("status") // Fetch status
+
                         Log.d("AdminPostActivity", "Adding document to layout: $documentId")
-                        addPostToLayout(documentId, title, message, userName)
+                        addPostToLayout(documentId, title, message, userName, status)
                     }
                 } else {
                     Log.e("AdminPostActivity", "Error loading documents: ", task.exception)
@@ -91,10 +93,10 @@ class AdminPostFragment : Fragment() {
         documentId: String,
         title: String?,
         message: String?,
-        userName: String?
+        userName: String?,
+        status: String?
     ) {
-        val postView =
-            getLayoutInflater().inflate(R.layout.admin_post_item, postsLinearLayout, false)
+        val postView = getLayoutInflater().inflate(R.layout.admin_post_item, postsLinearLayout, false)
         val titleTextView = postView.findViewById<TextView>(R.id.titleTextView)
         val messageTextView = postView.findViewById<TextView>(R.id.messageTextView)
         val userNameTextView = postView.findViewById<TextView>(R.id.userNameTextView)
@@ -103,6 +105,14 @@ class AdminPostFragment : Fragment() {
         titleTextView.text = title
         messageTextView.text = message
         userNameTextView.text = userName
+
+        // Conditionally show/hide the approve button based on the post status
+        if (status == "pending") {
+            approveButton.visibility = View.VISIBLE
+        } else {
+            approveButton.visibility = View.GONE
+        }
+
         deleteButton.setOnClickListener { v: View? ->
             showConfirmationDialog(
                 documentId,

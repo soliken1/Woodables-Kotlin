@@ -5,36 +5,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="16dp"
     android:padding="24dp"
-    android:backgroundTint="@color/babyblue"
+    android:backgroundTint="@color/whitebeigge"
     app:cardCornerRadius="16dp"
     app:cardElevation="6dp">
 
-<LinearLayout
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-<TextView
-    android:id="@+id/course_title"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dp"
-    android:layout_marginLeft="10dp"
-    android:text="Course Title"
-    android:textColor="@color/darkgrey"
-    android:textSize="20sp"
-android:textStyle="bold" />
+        <TextView
+            android:id="@+id/course_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="Course Title"
+            android:textColor="@color/darkgrey"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-<TextView
-    android:id="@+id/course_description"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="12dp"
-    android:layout_marginBottom="10dp"
-    android:text="Course Description"
-    android:textColor="@color/darkgrey"
-    android:textSize="16sp"
-android:layout_marginTop="8dp" />
+        <TextView
+            android:id="@+id/course_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="10dp"
+            android:text="Course Description"
+            android:textColor="@color/darkgrey"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
 
-</LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
