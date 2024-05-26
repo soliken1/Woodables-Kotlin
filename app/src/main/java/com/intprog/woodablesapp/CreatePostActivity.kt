@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
@@ -102,11 +103,13 @@ class CreatePostActivity : AppCompatActivity() {
             .add(post)
             .addOnSuccessListener { documentReference ->
                 // Post added successfully
-                Log.d("Firestore", "Post added successfully with ID: " + documentReference.id)
+                Log.d("Firestore", "Post added successfully with ID: ${documentReference.id}")
+                // Show a toast indicating successful posting
+                Toast.makeText(this, "Please Wait For Admin Approval On Your Post", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
                 // Handle failure
-                Log.e("Firestore", "Error adding post: " + e.message, e)
+                Log.e("Firestore", "Error adding post: ${e.message}", e)
             }
     }
 }
