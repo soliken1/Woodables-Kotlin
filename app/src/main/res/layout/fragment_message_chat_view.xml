@@ -112,14 +112,13 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#161804"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/linear_layout_users"
                     android:layout_width="match_parent"
                     android:layout_height="540dp"
-                    android:background="#ffffff"
+                    android:background="@color/transpa"
                     android:orientation="vertical"
                     tools:ignore="TextSizeCheck">
 

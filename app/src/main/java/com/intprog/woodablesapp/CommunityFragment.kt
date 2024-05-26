@@ -21,11 +21,10 @@ class CommunityFragment : Fragment() {
         addPost = viewRoot.findViewById(R.id.addpost)
 
         addPost.setOnClickListener {
-            val toPost = Intent(requireContext(), CreatePostActivity::class.java)
+            val toPost = Intent(viewRoot.context, CreatePostActivity::class.java)
             startActivity(toPost)
         }
 
-        // Call retrievePosts to fetch and render posts from Firestore
         retrievePosts()
 
         return viewRoot

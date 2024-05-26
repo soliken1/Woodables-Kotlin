@@ -62,6 +62,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            android:background="@color/transpa"
+            android:elevation="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -77,25 +79,19 @@
                 android:textColor="@color/darkgrey"
                 android:textSize="20sp" />
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="30dp"
-                android:contentDescription="@string/filter"
-                android:src="@drawable/filterwhite" />
         </RelativeLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/transpa"
             android:layout_below="@+id/adminLabel">
 
             <LinearLayout
                 android:id="@+id/joblistingsLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/transpa"
                 android:orientation="vertical" />
         </ScrollView>
     </LinearLayout>

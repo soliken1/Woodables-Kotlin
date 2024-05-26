@@ -71,25 +71,6 @@
         android:textColorHint="@color/white"
         android:fontFamily="@font/spartan_medium" />
 
-    <ImageView
-        android:id="@+id/toCamera"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:padding="10dp"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/whitecamera"
-        />
-
-    <ImageView
-        android:id="@+id/toGallery"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:padding="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/toCamera"
-        android:src="@drawable/whitegallery"
-        />
     <Button
         android:id="@+id/postbtn"
         android:layout_width="120dp"

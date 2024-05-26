@@ -1,6 +1,7 @@
 package com.intprog.woodablesapp
 
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ class MessageChatViewFragment : Fragment() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var storageReference: StorageReference
     private lateinit var userId: String
+    private lateinit var tosetting: ImageView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -27,9 +29,16 @@ class MessageChatViewFragment : Fragment() {
 
         val linearLayoutUsers = viewRoot.findViewById<LinearLayout>(R.id.linear_layout_users)
 
+        tosetting = viewRoot.findViewById(R.id.toSetting)
+
         mAuth = FirebaseAuth.getInstance()
         storageReference = FirebaseStorage.getInstance().reference
         userId = mAuth.currentUser!!.uid
+
+        tosetting.setOnClickListener{
+            val toSettings = Intent(viewRoot.context, MessageSettingActivity::class.java)
+            startActivity(toSettings)
+        }
 
         val profilePicture = viewRoot.findViewById<ImageView>(R.id.profilepicture)
         fetchProfilePicture(profilePicture)

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/transpa">
 
 
     <FrameLayout
@@ -21,10 +21,11 @@
 
     <!-- Navigation bar -->
     <LinearLayout
+
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/whitebeigge"
         android:orientation="horizontal">
 
 

@@ -46,8 +46,6 @@ class CreatePostActivity : AppCompatActivity() {
         content = findViewById(R.id.contenttxt)
         clickPost = findViewById(R.id.postbtn)
         closeview = findViewById(R.id.close)
-        toCam = findViewById(R.id.toCamera)
-        toGal = findViewById(R.id.toGallery)
 
         clickPost.setOnClickListener {
             val postTitle = title.text.toString()
@@ -76,23 +74,6 @@ class CreatePostActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left)
         }
 
-        toCam.setOnClickListener {
-            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            if (cameraIntent.resolveActivity(packageManager) != null) {
-                startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE)
-            } else {
-                Log.d("CreatePostActivity", "No Camera found")
-            }
-        }
-
-        toGal.setOnClickListener {
-            val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            if (galleryIntent.resolveActivity(packageManager) != null) {
-                startActivityForResult(galleryIntent, GALLERY_REQUEST_CODE)
-            } else {
-                Log.d("CreatePostActivity", "No app found to handle gallery intent")
-            }
-        }
     }
 
     private fun uploadPost(title: String, message: String, userName: String, status: String) {

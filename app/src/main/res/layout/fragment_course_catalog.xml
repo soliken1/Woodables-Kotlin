@@ -51,15 +51,6 @@
                 android:textStyle="bold"
                 android:textSize="25sp" />
 
-            <ImageView
-                android:id="@+id/burgermenu"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:padding="10dp"
-                android:background="@color/cinnamon"
-                android:src="@drawable/menu" />
-
         </LinearLayout>
 
 
@@ -74,18 +65,6 @@
             android:gravity="center_vertical"
             android:background="@color/greywhite"
             android:orientation="horizontal">
-
-            <SearchView
-                android:id="@+id/searchView"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="0.40"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart= "10dp"
-                android:background="@drawable/searchview_corners"
-                android:backgroundTint="@color/white"
-                android:queryHint="Search" />
 
             <Button
                 android:id="@+id/browsecoursecatalog"
@@ -131,15 +110,6 @@
                 android:text="Course Catalog"
                 android:textColor="@color/darkgrey"
                 android:textSize="19sp" />
-
-            <ImageButton
-                android:id="@+id/moreopt"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="0.20"
-                android:background="@color/cinnamon"
-                android:src="@drawable/optionsetting" />
 
         </LinearLayout>
 

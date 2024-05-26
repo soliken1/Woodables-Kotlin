@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/transpa">
 
     <LinearLayout
         android:id="@+id/searchbargroup"
@@ -80,14 +80,6 @@
             android:textColor="@color/darkgrey"
             android:textSize="20sp" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="30dp"
-            android:contentDescription="@string/filter"
-            android:src="@drawable/filterwhite" />
     </RelativeLayout>
 
 
@@ -100,13 +92,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/white">
+            android:background="@color/transpa">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:orientation="vertical"
+                android:elevation="8dp"
                 android:background="@drawable/listing">
 
                 <LinearLayout

@@ -40,12 +40,6 @@
             android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".DummyGetImageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DummyCreatePostActivity"
-            android:exported="false" />
-        <activity
             android:name=".VideoActivity"
             android:exported="false" />
         <activity

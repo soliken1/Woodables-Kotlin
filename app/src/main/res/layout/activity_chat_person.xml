@@ -10,45 +10,45 @@
     <LinearLayout
         android:id="@+id/chat_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:padding="6dp"
+        android:background="@color/transpa"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="34dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/backbutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
             android:src="@drawable/blackleftarrow"/>
 
         <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
             android:src="@drawable/woodableslogo"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bluebg_color"/>
+            android:layout_weight="1"/>
+
 
         <TextView
             android:id="@+id/receiverUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="3"
             android:textSize="18sp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:textColor="@color/darkgrey"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:src="@drawable/calliconblack"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="8dp"
-            />
-
-
-
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:padding="5dp"
+            android:src="@drawable/calliconblack" />
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -56,39 +56,34 @@
         android:layout_marginTop="2dp"/>
 
     <!-- Scroll view for chat messages -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="20dp"
-        android:fillViewport="true">
 
-        <LinearLayout
-            android:id="@+id/messageContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/messageContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="bottom"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-        </LinearLayout>
+            </LinearLayout>
 
-
-
-    </ScrollView>
 
     <!-- Input area for new messages -->
     <LinearLayout
+        android:id="@+id/messagearea"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:background="@color/white"> <!-- Change to desired background color -->
+        android:background="@color/transpa"> <!-- Change to desired background color -->
 
         <ImageView
             android:id="@+id/plus_button"
-            android:layout_width="52dp"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:src="@drawable/plusicon"
-            android:layout_marginTop="5dp"
+            android:layout_weight="0.50"
             android:contentDescription="Add image or doc"
             android:padding="10dp"/>
 
@@ -96,22 +91,20 @@
             android:id="@+id/message_input"
             android:layout_width="0dp"
             android:layout_height="42dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:hint="Type a message"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:padding="10dp"
             android:background="@drawable/textbox_4curvedcorners"
-            android:textColor="@android:color/black"
-            />
+            android:textColor="@android:color/black" />
 
         <ImageView
             android:id="@+id/send_button"
-            android:layout_width="52dp"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
             android:src="@drawable/sendicon"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
             android:contentDescription="Send message"
             android:padding="10dp"/>
     </LinearLayout>

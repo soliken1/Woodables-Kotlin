@@ -6,19 +6,21 @@ import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.WindowManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+
 
 class ChatPersonActivity : AppCompatActivity() {
 
@@ -28,15 +30,17 @@ class ChatPersonActivity : AppCompatActivity() {
     private lateinit var messageInput: EditText
     private lateinit var sendButton: ImageView
     private lateinit var chatLayout: LinearLayout
+    private lateinit var bkbtn: ImageView
+    private lateinit var messagearea: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_chat_person)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById<View>(R.id.main)) { v, insets ->
             val systemBars: Insets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
 
@@ -53,6 +57,15 @@ class ChatPersonActivity : AppCompatActivity() {
         messageInput = findViewById(R.id.message_input)
         sendButton = findViewById(R.id.send_button)
         chatLayout = findViewById(R.id.chat_layout)
+        bkbtn = findViewById(R.id.backbutton);
+
+        bkbtn.setOnClickListener{ finish() }
+
+        messageInput.requestFocus();
+
+        messagearea = findViewById(R.id.messagearea);
+
+
 
         // Set OnClickListener to the send button
         sendButton.setOnClickListener {
