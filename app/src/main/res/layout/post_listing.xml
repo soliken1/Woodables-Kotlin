@@ -4,7 +4,7 @@
     android:layout_margin="16dp"
     android:layout_marginBottom="8dp"
     android:background="@color/white"
-    android:backgroundTint="@color/babyblue"
+    android:backgroundTint="@color/whitebeigge"
     android:elevation="4dp"
     android:padding="16dp"
     android:radius="8dp">
@@ -37,15 +37,18 @@
                     android:textColor="@color/darkgrey"
                     android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/title_post"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_medium"
-                    android:textColor="@color/darkgrey"
-                    android:textSize="12sp" />
+
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/title_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/spartan_medium"
+            android:textColor="@color/darkgrey"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/pay_range_post"
@@ -55,7 +58,7 @@
             android:layout_marginLeft="16dp"
             android:fontFamily="@font/spartan_medium"
             android:textColor="@color/darkgrey"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/details_post"
@@ -65,7 +68,7 @@
             android:layout_marginLeft="16dp"
             android:fontFamily="@font/spartan_medium"
             android:textColor="@color/darkgrey"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/requirements1_post"
@@ -75,7 +78,7 @@
             android:layout_marginLeft="16dp"
             android:fontFamily="@font/spartan_medium"
             android:textColor="@color/darkgrey"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/requirements2_post"
@@ -85,7 +88,7 @@
             android:layout_marginLeft="16dp"
             android:fontFamily="@font/spartan_medium"
             android:textColor="@color/darkgrey"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/requirements3_post"
@@ -95,7 +98,7 @@
             android:layout_marginLeft="16dp"
             android:fontFamily="@font/spartan_medium"
             android:textColor="@color/darkgrey"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/benefits_post"
@@ -105,45 +108,24 @@
             android:layout_marginLeft="16dp"
             android:fontFamily="@font/spartan_medium"
             android:textColor="@color/darkgrey"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="5dp"
             android:layout_marginTop="8dp">
 
-
-
             <Button
-                android:layout_width="0dp"
+                android:id="@+id/apply_button"
+                android:layout_width="200dp"
                 android:layout_height="45dp"
-                android:layout_weight="0.75"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="85dp"
+                android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/purple_200"
                 android:text="@string/apply"
-                android:textSize="7sp" />
+                android:textSize="16sp" />
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="5dp"
-                android:layout_weight="0.75"
-                android:backgroundTint="@color/blue"
-                android:text="@string/save"
-                android:textSize="7sp" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_weight="1.20"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="@color/teal_200"
-                android:text="@string/interested"
-                android:textSize="7sp" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
