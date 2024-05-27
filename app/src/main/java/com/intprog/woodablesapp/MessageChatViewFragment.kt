@@ -3,6 +3,7 @@ package com.intprog.woodablesapp
 import android.content.Intent
 import android.media.Image
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +51,16 @@ class MessageChatViewFragment : Fragment() {
                 // Get user data fields from Firestore document
                 val firstName = document.getString("First Name")
                 val lastName = document.getString("Last Name")
+                val userID = document.id
+
+                // Skip users with null values for First Name or Last Name
+                if (firstName.isNullOrEmpty() || lastName.isNullOrEmpty()) {
+                    Log.d("Firestore", "Skipping user $userID: First Name or Last Name is null or empty")
+                    continue
+                }
+
+                // Log the user data
+                Log.d("Firestore", "User ID: $userID, First Name: $firstName, Last Name: $lastName")
 
                 // Inflate the user layout XML
                 val userView = inflater.inflate(R.layout.message_user, null)
@@ -60,9 +71,6 @@ class MessageChatViewFragment : Fragment() {
 
                 // Set OnClickListener to redirect to ChatPersonActivity
                 userView.setOnClickListener {
-                    // Get the user ID from the Firestore document
-                    val userID = document.id
-
                     // Start ChatPersonActivity and pass the selected user's ID
                     val intent = Intent(context, ChatPersonActivity::class.java)
                     intent.putExtra("userID", userID)
@@ -73,8 +81,9 @@ class MessageChatViewFragment : Fragment() {
                 // Add the user layout to the LinearLayout
                 linearLayoutUsers.addView(userView)
             }
+
         }.addOnFailureListener { e ->
-            // Handle any errors
+            Log.e("Firestore", "Error fetching users: $e")
         }
 
         return viewRoot
