@@ -20,14 +20,15 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:src="@drawable/blackleftarrow" />
+            android:src="@drawable/blackleftarrow"/>
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:padding="5dp"
             android:src="@drawable/woodableslogo"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
+
 
         <TextView
             android:id="@+id/receiverUser"
@@ -37,7 +38,7 @@
             android:layout_weight="3"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/darkgrey" />
+            android:textColor="@color/darkgrey"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -52,25 +53,22 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#D9D9D9"
-        android:layout_marginTop="2dp" />
+        android:layout_marginTop="2dp"/>
 
     <!-- Scroll view for chat messages -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
 
-        <LinearLayout
-            android:id="@+id/messageContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/messageContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="bottom"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-        </LinearLayout>
-    </ScrollView>
+            </LinearLayout>
+
 
     <!-- Input area for new messages -->
     <LinearLayout
@@ -79,7 +77,7 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:layout_marginBottom="25dp"
-        android:background="@color/transpa">
+        android:background="@color/transpa"> <!-- Change to desired background color -->
 
         <ImageView
             android:id="@+id/plus_button"
@@ -88,7 +86,7 @@
             android:src="@drawable/plusicon"
             android:layout_weight="0.50"
             android:contentDescription="Add image or doc"
-            android:padding="10dp" />
+            android:padding="10dp"/>
 
         <EditText
             android:id="@+id/message_input"
@@ -109,7 +107,7 @@
             android:layout_weight="0.50"
             android:src="@drawable/sendicon"
             android:contentDescription="Send message"
-            android:padding="10dp" />
+            android:padding="10dp"/>
     </LinearLayout>
 
 </LinearLayout>
