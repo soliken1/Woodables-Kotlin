@@ -2,6 +2,7 @@ package com.intprog.woodablesapp
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +12,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QueryDocumentSnapshot
-
 
 class LearnCourseFragment : Fragment() {
 
@@ -27,7 +27,10 @@ class LearnCourseFragment : Fragment() {
     private lateinit var enrolledCoursesContainer: LinearLayout
     private lateinit var db: FirebaseFirestore
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val viewRoot = inflater.inflate(R.layout.fragment_learn_course, container, false)
 
         toAssess = viewRoot.findViewById(R.id.skillassess)
@@ -39,99 +42,133 @@ class LearnCourseFragment : Fragment() {
         toCatalog.setOnClickListener {
             val fragmentManager = activity?.supportFragmentManager
             val catalogFragment = CourseCatalogFragment()
-            fragmentManager?.beginTransaction()?.replace(R.id.contentView, catalogFragment)?.commit()
+            if (fragmentManager != null) {
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.contentView, catalogFragment)
+                fragmentTransaction.commit()
+            }
         }
 
         toAssess.setOnClickListener {
-            val toAssessIntent = Intent(context, AssessmentActivity::class.java)
-            startActivityForResult(toAssessIntent, ASSESSMENT_REQUEST_CODE)
+            val toAssess = Intent(viewRoot.context, AssessmentActivity::class.java)
+            startActivityForResult(toAssess, ASSESSMENT_REQUEST_CODE)
         }
 
-        refreshButton.setOnClickListener { refreshFragment() }
+        refreshButton.setOnClickListener {
+            refreshFragment()
+        }
 
         loadEnrolledCourses()
 
         return viewRoot
     }
 
-
     private fun refreshFragment() {
         val fragmentManager = activity?.supportFragmentManager
-        fragmentManager?.beginTransaction()?.replace(R.id.contentView, LearnCourseFragment())?.commit()
+        if (fragmentManager != null) {
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.contentView, LearnCourseFragment())
+            fragmentTransaction.commit()
+        }
     }
 
     private fun loadEnrolledCourses() {
         val currentUser = FirebaseAuth.getInstance().currentUser
-        currentUser?.let { user ->
-            val userId = user.uid
+        if (currentUser != null) {
+            val userId = currentUser.uid
             db.collection("enrolled_courses").document(userId).collection("courses")
                 .get()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val querySnapshot = task.result
-                        querySnapshot?.let {
+                        if (querySnapshot != null) {
                             enrolledCoursesContainer.removeAllViews() // Clear existing views
                             for (document in querySnapshot) {
-                                val title = document.getString("title") ?: ""
-                                val description = document.getString("description") ?: ""
-                                val details = document.getString("details") ?: ""
-                                addEnrolledCourseToUI(title, description, details)
+                                val title = document.getString("title")
+                                val description = document.getString("description")
+                                val details = document.getString("details")
+                                val link = document.getString("link")
+                                addEnrolledCourseToUI(title, description, details, link)
                             }
                         }
                     } else {
                         Toast.makeText(context, "Failed to load courses.", Toast.LENGTH_SHORT).show()
                     }
                 }
-        } ?: run {
+        } else {
             Toast.makeText(context, "User not authenticated. Please log in.", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun addEnrolledCourseToUI(title: String, description: String, details: String) {
+    private fun addEnrolledCourseToUI(title: String?, description: String?, details: String?, link: String?) {
         val courseItem = LayoutInflater.from(context).inflate(R.layout.item_enrolled_course, enrolledCoursesContainer, false)
 
-        courseItem.findViewById<TextView>(R.id.course_title).text = title
-        courseItem.findViewById<TextView>(R.id.course_description).text = description
+        val courseTitle = courseItem.findViewById<TextView>(R.id.course_title)
+        val courseDescription = courseItem.findViewById<TextView>(R.id.course_description)
 
-        courseItem.setOnClickListener { showCourseDetailsDialog(title, description, details) }
+        courseTitle.text = title
+        courseDescription.text = description
+
+        courseItem.setOnClickListener {
+            showCourseDetailsDialog(title, description, details, link)
+        }
 
         enrolledCoursesContainer.addView(courseItem)
     }
 
-    private fun showCourseDetailsDialog(title: String, description: String, details: String) {
-        val builder = AlertDialog.Builder(requireContext())
-        val dialogView = layoutInflater.inflate(R.layout.dialog_learncourse_details, null)
+    private fun showCourseDetailsDialog(title: String?, description: String?, details: String?, link: String?) {
+        context?.let { context ->
+            val builder = androidx.appcompat.app.AlertDialog.Builder(context)
+            val inflater = layoutInflater
+            val dialogView = inflater.inflate(R.layout.dialog_learncourse_details, null)
+            builder.setView(dialogView)
 
-        val dialogTitleTextView = dialogView.findViewById<TextView>(R.id.dialog_course_title)
-        val dialogDetailsTextView = dialogView.findViewById<TextView>(R.id.dialog_course_details)
-        val cancelButton = dialogView.findViewById<ImageView>(R.id.button_cancel)
-        val dropButton = dialogView.findViewById<Button>(R.id.button_drop)
-        val launchButton = dialogView.findViewById<Button>(R.id.button_launch)
+            val dialogTitle = dialogView.findViewById<TextView>(R.id.dialog_course_title)
+            val dialogDetails = dialogView.findViewById<TextView>(R.id.dialog_course_details)
+            val dialogLink = dialogView.findViewById<TextView>(R.id.dialog_course_link)
+            val buttonCancel = dialogView.findViewById<ImageView>(R.id.button_cancel)
+            val buttonDropCourse = dialogView.findViewById<Button>(R.id.button_drop)
+            val buttonLaunchCourse = dialogView.findViewById<Button>(R.id.button_launch)
 
-        dialogTitleTextView.text = title
-        dialogDetailsTextView.text = details
+            dialogTitle.text = title
+            dialogDetails.text = details
 
-        val dialog = builder.setView(dialogView).create()
+            if (link != null) {
+                dialogLink.text = link
+                dialogLink.visibility = View.VISIBLE
+                buttonLaunchCourse.isEnabled = true
+            } else {
+                dialogLink.visibility = View.GONE
+                buttonLaunchCourse.isEnabled = false
+            }
 
-        cancelButton.setOnClickListener { dialog.dismiss() }
+            val dialog = builder.create()
 
-        dropButton.setOnClickListener {
-            dropCourse(title)
-            dialog.dismiss()
+            buttonCancel.setOnClickListener { dialog.dismiss() }
+
+            buttonDropCourse.setOnClickListener {
+                dropCourse(title)
+                dialog.dismiss()
+            }
+
+            buttonLaunchCourse.setOnClickListener {
+                if (link != null) {
+                    val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                    startActivity(browserIntent)
+                } else {
+                    Toast.makeText(context, "No link available for this course.", Toast.LENGTH_SHORT).show()
+                }
+                dialog.dismiss()
+            }
+
+            dialog.show()
         }
-
-        launchButton.setOnClickListener {
-            launchCourse(title)
-            dialog.dismiss()
-        }
-
-        dialog.show()
     }
 
-    private fun dropCourse(title: String) {
+    private fun dropCourse(title: String?) {
         val currentUser = FirebaseAuth.getInstance().currentUser
-        currentUser?.let { user ->
-            val userId = user.uid
+        if (currentUser != null) {
+            val userId = currentUser.uid
             db.collection("enrolled_courses").document(userId).collection("courses")
                 .whereEqualTo("title", title)
                 .get()
@@ -143,7 +180,7 @@ class LearnCourseFragment : Fragment() {
                                     Toast.makeText(context, "Course dropped successfully.", Toast.LENGTH_SHORT).show()
                                     loadEnrolledCourses() // Reload the courses to update UI
                                 }
-                                .addOnFailureListener { e ->
+                                .addOnFailureListener {
                                     Toast.makeText(context, "Failed to drop course.", Toast.LENGTH_SHORT).show()
                                 }
                         }
@@ -152,11 +189,6 @@ class LearnCourseFragment : Fragment() {
                     }
                 }
         }
-    }
-
-    private fun launchCourse(title: String) {
-        Toast.makeText(context, "Launching course: $title", Toast.LENGTH_SHORT).show()
-        // Implement your launch course logic here
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

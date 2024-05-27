@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
-import com.google.firebase.firestore.QuerySnapshot
 
 class CourseCatalogFragment : Fragment() {
 
@@ -27,7 +26,10 @@ class CourseCatalogFragment : Fragment() {
     private lateinit var db: FirebaseFirestore
     private lateinit var courseListContainer: LinearLayout
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val viewRoot = inflater.inflate(R.layout.fragment_course_catalog, container, false)
 
         courseListContainer = viewRoot.findViewById(R.id.course_list_container)
@@ -41,12 +43,14 @@ class CourseCatalogFragment : Fragment() {
         }
 
         backBtn.setOnClickListener {
-            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+            val fragmentManager = activity?.supportFragmentManager
             val learnFragment = LearnCourseFragment()
-            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.setCustomAnimations(R.anim.slide_out_right, R.anim.slide_in_left)
-            fragmentTransaction.replace(R.id.contentView, learnFragment)
-            fragmentTransaction.commit()
+            if (fragmentManager != null) {
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                fragmentTransaction.setCustomAnimations(R.anim.slide_out_right, R.anim.slide_in_left)
+                fragmentTransaction.replace(R.id.contentView, learnFragment)
+                fragmentTransaction.commit()
+            }
         }
 
         loadCourses()
@@ -58,13 +62,14 @@ class CourseCatalogFragment : Fragment() {
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val querySnapshot: QuerySnapshot? = task.result
-                    querySnapshot?.let {
-                        for (document: QueryDocumentSnapshot in it) {
+                    val querySnapshot = task.result
+                    if (querySnapshot != null) {
+                        for (document in querySnapshot) {
                             val title = document.getString("title")
                             val description = document.getString("description")
                             val details = document.getString("details")
-                            addCourseToUI(title, description, details)
+                            val link = document.getString("link")
+                            addCourseToUI(title, description, details, link)
                         }
                     }
                 } else {
@@ -73,60 +78,66 @@ class CourseCatalogFragment : Fragment() {
             }
     }
 
-    private fun addCourseToUI(title: String?, description: String?, details: String?) {
-        val courseItem: View = LayoutInflater.from(context).inflate(R.layout.item_course, courseListContainer, false)
+    private fun addCourseToUI(title: String?, description: String?, details: String?, link: String?) {
+        val courseItem = LayoutInflater.from(context).inflate(R.layout.item_course, courseListContainer, false)
 
-        val courseTitle: TextView = courseItem.findViewById(R.id.course_title)
-        val courseDescription: TextView = courseItem.findViewById(R.id.course_description)
+        val courseTitle = courseItem.findViewById<TextView>(R.id.course_title)
+        val courseDescription = courseItem.findViewById<TextView>(R.id.course_description)
 
         courseTitle.text = title
         courseDescription.text = description
 
-        courseItem.setOnClickListener { showCourseDetailsDialog(title, description, details) }
+        courseItem.setOnClickListener {
+            showCourseDetailsDialog(title, description, details, link)
+        }
 
         courseListContainer.addView(courseItem)
     }
 
-    private fun showCourseDetailsDialog(title: String?, description: String?, details: String?) {
-        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
-        val inflater: LayoutInflater = layoutInflater
-        val dialogView: View = inflater.inflate(R.layout.dialog_course_details, null)
+    private fun showCourseDetailsDialog(title: String?, description: String?, details: String?, link: String?) {
+        val builder = AlertDialog.Builder(context)
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_course_details, null)
         builder.setView(dialogView)
 
-        val dialogTitle: TextView = dialogView.findViewById(R.id.dialog_course_title)
-        val dialogDetails: TextView = dialogView.findViewById(R.id.dialog_course_details)
-        val buttonCancel: Button = dialogView.findViewById(R.id.button_cancel)
-        val buttonEnroll: Button = dialogView.findViewById(R.id.button_enroll)
+        val dialogTitle = dialogView.findViewById<TextView>(R.id.dialog_course_title)
+        val dialogDetails = dialogView.findViewById<TextView>(R.id.dialog_course_details)
+        val dialogLink = dialogView.findViewById<TextView>(R.id.dialog_course_link)
+        val buttonCancel = dialogView.findViewById<Button>(R.id.button_cancel)
+        val buttonEnroll = dialogView.findViewById<Button>(R.id.button_enroll)
 
         dialogTitle.text = title
         dialogDetails.text = details
+        dialogLink.text = link
 
-        val dialog: AlertDialog = builder.create()
+        val dialog = builder.create()
 
         buttonCancel.setOnClickListener { dialog.dismiss() }
 
         buttonEnroll.setOnClickListener {
-            val currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+            val currentUser = FirebaseAuth.getInstance().currentUser
             if (currentUser != null) {
-                val userId: String = currentUser.uid
+                val userId = currentUser.uid
 
-                val courseData: MutableMap<String, Any> = HashMap()
-                courseData["title"] = title ?: ""
-                courseData["description"] = description ?: ""
-                courseData["details"] = details ?: ""
+                val courseData = hashMapOf(
+                    "title" to title,
+                    "description" to description,
+                    "details" to details,
+                    "link" to link
+                )
 
                 db.collection("enrolled_courses").document(userId)
                     .collection("courses")
                     .add(courseData)
-                    .addOnSuccessListener { documentReference ->
-                        Toast.makeText(requireContext(), "Enrolled successfully!", Toast.LENGTH_SHORT).show()
+                    .addOnSuccessListener {
+                        Toast.makeText(context, "Enrolled successfully!", Toast.LENGTH_SHORT).show()
                         dialog.dismiss()
                     }
-                    .addOnFailureListener { e ->
-                        Toast.makeText(requireContext(), "Failed to enroll. Please try again.", Toast.LENGTH_SHORT).show()
+                    .addOnFailureListener {
+                        Toast.makeText(context, "Failed to enroll. Please try again.", Toast.LENGTH_SHORT).show()
                     }
             } else {
-                Toast.makeText(requireContext(), "User not authenticated. Please log in.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "User not authenticated. Please log in.", Toast.LENGTH_SHORT).show()
             }
         }
 
