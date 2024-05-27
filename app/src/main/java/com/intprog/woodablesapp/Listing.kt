@@ -10,6 +10,7 @@ class Listing {
     var requirements3: String? = null
     var hasBenefits: String? = null
     var userId: String? = null // New field
+    var creatorEmail: String? = null
 
     constructor()
     constructor(
@@ -21,7 +22,8 @@ class Listing {
         requirements2: String?,
         requirements3: String?,
         hasBenefits: String?,
-        userId: String?
+        userId: String?,
+        creatorEmail: String?
     ) {
         this.companyName = companyName
         this.jobTitle = jobTitle
@@ -32,5 +34,6 @@ class Listing {
         this.requirements3 = requirements3
         this.hasBenefits = hasBenefits
         this.userId = userId
+        this.creatorEmail = creatorEmail
     }
 }
