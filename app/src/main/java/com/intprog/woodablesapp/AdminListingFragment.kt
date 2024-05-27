@@ -18,10 +18,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
+import java.util.logging.Handler
 
-class AdminListingFragment : Fragment() {
+class   AdminListingFragment : Fragment() {
     private var listingsLinearLayout: LinearLayout? = null
     private var db: FirebaseFirestore? = null
+    private val handler = android.os.Handler()
+
+    private var isActive = true
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,8 +35,23 @@ class AdminListingFragment : Fragment() {
         val viewRoot = inflater.inflate(R.layout.fragment_admin_listing, container, false)
         listingsLinearLayout = viewRoot.findViewById(R.id.listingsLinearLayoutAdmin)
         db = FirebaseFirestore.getInstance()
-        loadDocumentIds()
         return viewRoot
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        handler.postDelayed({
+            loadDocumentIds() // Your data loading logic
+        }, 1000)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        isActive = true
+    }
+
+    override fun onPause() {
+        super.onPause()
+        isActive = false
     }
 
     private fun loadDocumentIds() {
@@ -43,7 +63,7 @@ class AdminListingFragment : Fragment() {
             ) // Ensure this matches the composite index
             .get()
             .addOnCompleteListener { task: Task<QuerySnapshot> ->
-                if (task.isSuccessful) {
+                if (task.isSuccessful && isActive) {
                     listingsLinearLayout!!.removeAllViews() // Clear existing views
                     for (document in task.result) {
                         val documentId = document.id

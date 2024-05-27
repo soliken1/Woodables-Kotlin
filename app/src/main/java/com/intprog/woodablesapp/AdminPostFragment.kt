@@ -19,6 +19,10 @@ import com.google.firebase.firestore.QuerySnapshot
 class AdminPostFragment : Fragment() {
     private var postsLinearLayout: LinearLayout? = null
     private var db: FirebaseFirestore? = null
+    private val handler = android.os.Handler()
+
+    private var isActive = true
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,16 +31,35 @@ class AdminPostFragment : Fragment() {
         val viewRoot = inflater.inflate(R.layout.fragment_admin_post, container, false)
         postsLinearLayout = viewRoot.findViewById(R.id.postsLinearLayoutAdmin)
         db = FirebaseFirestore.getInstance()
-        loadPosts()
+
         return viewRoot
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        handler.postDelayed({
+            loadPosts() // Your data loading logic
+        }, 1000)
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        isActive = true
+    }
+
+    override fun onPause() {
+        super.onPause()
+        isActive = false
     }
 
     private fun loadPosts() {
         db!!.collection("posts")
             .get()
             .addOnCompleteListener { task: Task<QuerySnapshot> ->
-                if (task.isSuccessful) {
-                    for (document in task.result) {
+                if (task.isSuccessful && isActive) {
+                    for (document in task.result ) {
                         val documentId = document.id
                         val title = document.getString("title")
                         val message = document.getString("message")

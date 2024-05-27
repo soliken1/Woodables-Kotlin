@@ -3,6 +3,7 @@ package com.intprog.woodablesapp
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,11 +19,16 @@ import java.util.concurrent.TimeUnit
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 
 class AdminAssesmentFragment : Fragment() {
 
     private lateinit var assessmentLinearLayout: LinearLayout
     private lateinit var db: FirebaseFirestore
+    private val handler = android.os.Handler()
+
+    private var isActive = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,16 +40,32 @@ class AdminAssesmentFragment : Fragment() {
 
         db = FirebaseFirestore.getInstance()
 
-        loadDocumentIds()
-
         return viewRoot
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        handler.postDelayed({
+            loadDocumentIds() // Your data loading logic
+        }, 1000)
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        isActive = true
+    }
+
+    override fun onPause() {
+        super.onPause()
+        isActive = false
     }
 
     private fun loadDocumentIds() {
         db.collection("assessment")
             .get()
             .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
+                if (task.isSuccessful && isActive) {
                     for (document in task.result!!) {
                         val documentId = document.id
                         val fullName =

@@ -3,6 +3,7 @@ package com.intprog.woodablesapp
 import android.content.Intent
 import android.media.Image
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -80,6 +81,7 @@ class MessageChatViewFragment : Fragment() {
 
                 // Add the user layout to the LinearLayout
                 linearLayoutUsers.addView(userView)
+
             }
 
         }.addOnFailureListener { e ->
