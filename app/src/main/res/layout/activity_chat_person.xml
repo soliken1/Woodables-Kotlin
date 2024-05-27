@@ -76,6 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
+        android:layout_marginBottom="25dp"
         android:background="@color/transpa"> <!-- Change to desired background color -->
 
         <ImageView

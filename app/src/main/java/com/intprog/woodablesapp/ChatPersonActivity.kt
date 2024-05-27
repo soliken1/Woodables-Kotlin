@@ -17,9 +17,15 @@ import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
 
 
 class ChatPersonActivity : AppCompatActivity() {
@@ -32,6 +38,8 @@ class ChatPersonActivity : AppCompatActivity() {
     private lateinit var chatLayout: LinearLayout
     private lateinit var bkbtn: ImageView
     private lateinit var messagearea: LinearLayout
+
+    private var messageListener: ListenerRegistration? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,15 +65,13 @@ class ChatPersonActivity : AppCompatActivity() {
         messageInput = findViewById(R.id.message_input)
         sendButton = findViewById(R.id.send_button)
         chatLayout = findViewById(R.id.chat_layout)
-        bkbtn = findViewById(R.id.backbutton);
+        bkbtn = findViewById(R.id.backbutton)
 
-        bkbtn.setOnClickListener{ finish() }
+        bkbtn.setOnClickListener { finish() }
 
-        messageInput.requestFocus();
+        messageInput.requestFocus()
 
-        messagearea = findViewById(R.id.messagearea);
-
-
+        messagearea = findViewById(R.id.messagearea)
 
         // Set OnClickListener to the send button
         sendButton.setOnClickListener {
@@ -74,6 +80,48 @@ class ChatPersonActivity : AppCompatActivity() {
 
         // Load messages for the selected user
         loadMessages(selectedUserID)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // Start listening for real-time updates
+        startListeningForMessages()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        // Stop listening for real-time updates
+        stopListeningForMessages()
+    }
+
+    private fun startListeningForMessages() {
+        // Set up a listener for new messages
+        messageListener = db.collection("messages")
+            .whereIn("sender", listOf(FirebaseAuth.getInstance().currentUser?.uid, selectedUserID))
+            .whereIn("receiver", listOf(FirebaseAuth.getInstance().currentUser?.uid, selectedUserID))
+            .orderBy("timestamp", Query.Direction.ASCENDING)
+            .addSnapshotListener { snapshots, e ->
+                if (e != null) {
+                    Log.e("Listen", "Error listening for messages: $e")
+                    return@addSnapshotListener
+                }
+
+                if (snapshots != null && !snapshots.isEmpty) {
+                    // Process and display each new message
+                    for (doc in snapshots.documentChanges) {
+                        if (doc.type == DocumentChange.Type.ADDED) {
+                            val message = doc.document.data
+                            val messageContainer = findViewById<LinearLayout>(R.id.messageContainer)
+                            processMessage(message, messageContainer)
+                        }
+                    }
+                }
+            }
+    }
+
+    private fun stopListeningForMessages() {
+        // Remove the message listener
+        messageListener?.remove()
     }
 
     private fun sendMessage() {
@@ -97,11 +145,8 @@ class ChatPersonActivity : AppCompatActivity() {
                 // Add any other fields as needed
             )
 
-            // Immediately update the UI with the new message
-            updateUIWithNewMessage(message)
-
             // Save the message to Firestore
-            FirebaseFirestore.getInstance().collection("messages")
+            db.collection("messages")
                 .add(message)
                 .addOnSuccessListener {
                     // Message saved successfully
@@ -118,69 +163,16 @@ class ChatPersonActivity : AppCompatActivity() {
     }
 
     private fun loadMessages(selectedUserID: String) {
-        if (selectedUserID.isNotEmpty()) {
-            val currentUser = FirebaseAuth.getInstance().currentUser
-            currentUser?.let { user ->
-                val currentUserId = user.uid
-
-                // Initialize an empty list to store all messages
-                val allMessages = mutableListOf<Map<String, Any>>()
-
-                // Query Firestore for messages between the current user and the selected user
-                db.collection("messages")
-                    .whereEqualTo("sender", currentUserId)
-                    .whereEqualTo("receiver", selectedUserID)
-                    .orderBy("timestamp", Query.Direction.ASCENDING)
-                    .get()
-                    .addOnSuccessListener { queryDocumentSnapshots ->
-                        // Add all messages sent by the current user to the list
-                        for (document in queryDocumentSnapshots) {
-                            val messageData = document.data
-                            allMessages.add(messageData)
-                        }
-
-                        // Query Firestore for messages sent by the selected user to the current user
-                        db.collection("messages")
-                            .whereEqualTo("sender", selectedUserID)
-                            .whereEqualTo("receiver", currentUserId)
-                            .orderBy("timestamp", Query.Direction.ASCENDING)
-                            .get()
-                            .addOnSuccessListener { queryDocumentSnapshots1 ->
-                                // Add all messages sent by the selected user to the list
-                                for (document in queryDocumentSnapshots1) {
-                                    val messageData = document.data
-                                    allMessages.add(messageData)
-                                }
-
-                                // Sort all messages based on their timestamps
-                                allMessages.sortBy { it["timestamp"] as Long }
-
-                                // Get the LinearLayout container for messages
-                                val messageContainer = findViewById<LinearLayout>(R.id.messageContainer)
-                                messageContainer.removeAllViews() // Clear existing messages
-
-                                // Iterate through the sorted messages and display them
-                                allMessages.forEach { message ->
-                                    // Process each message
-                                    processMessage(message, messageContainer, currentUserId)
-                                }
-                            }
-                            .addOnFailureListener { e -> Log.e("LoadMessages", "Error getting messages: ", e) }
-                    }
-                    .addOnFailureListener { e -> Log.e("LoadMessages", "Error getting messages: ", e) }
-            }
-        }
+        // This method may not be needed anymore since we are using a real-time listener
     }
 
     private fun processMessage(
         message: Map<String, Any>,
-        messageContainer: LinearLayout,
-        currentUserId: String
+        messageContainer: LinearLayout
     ) {
         // Extract message details from the map
         val messageText = message["message"] as String
         val senderID = message["sender"] as String
-        Log.d("Message", "Sender: $senderID, Message: $messageText")
 
         // Inflate the chat message layout
         val messageView =
@@ -198,8 +190,9 @@ class ChatPersonActivity : AppCompatActivity() {
             LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
-        if (senderID == currentUserId) {
-            // Set layout parameters for sender messages (right-aligned, green background)
+        val currentUserID = FirebaseAuth.getInstance().currentUser?.uid
+        if (senderID == currentUserID) {
+            // Set layout parameters for sender messages (right-aligned, blue background)
             layoutParams.gravity = Gravity.END or Gravity.CENTER_VERTICAL
             messageView.setBackgroundResource(R.drawable.bluemsg_bg)
             messageTextView.setTextColor(Color.WHITE)
@@ -213,17 +206,5 @@ class ChatPersonActivity : AppCompatActivity() {
 
         // Add the inflated layout to the message container
         messageContainer.addView(messageView)
-    }
-
-    private fun updateUIWithNewMessage(message: Map<String, Any>) {
-        // Get the LinearLayout container for messages
-        val messageContainer = findViewById<LinearLayout>(R.id.messageContainer)
-
-        // Process the new message and add it to the UI
-        processMessage(
-            message,
-            messageContainer,
-            FirebaseAuth.getInstance().currentUser?.uid ?: ""
-        )
     }
 }
