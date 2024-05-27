@@ -51,9 +51,13 @@ class CreatePostActivity : AppCompatActivity() {
             val postTitle = title.text.toString()
             val postContent = content.text.toString()
             val preferences = getSharedPreferences("user_info", MODE_PRIVATE)
-            val name = "w/" + preferences.getString("name", "")
-            val role = preferences.getString("role", "")
+            val name = "w/" + preferences?.getString("fullname", "Default Name")
+            val role = preferences?.getString("role", "Default Role")
             val status = "pending"
+
+            // Log the contents of preferences
+            val userInfo = "Name: $name, Role: $role"
+            Log.d("UserInfo", userInfo)
 
             // Check if title and content are not empty
             if (!postTitle.isEmpty() && !postContent.isEmpty()) {
@@ -68,6 +72,7 @@ class CreatePostActivity : AppCompatActivity() {
                 Snackbar.make(it, "Title and content cannot be empty", Snackbar.LENGTH_SHORT).show()
             }
         }
+
 
         closeview.setOnClickListener {
             finish()

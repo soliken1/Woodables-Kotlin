@@ -1,11 +1,13 @@
 package com.intprog.woodablesapp
 
 import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -20,8 +22,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class ClientProfileFragment : Fragment() {
 
@@ -35,7 +40,7 @@ class ClientProfileFragment : Fragment() {
     private lateinit var profileDesc7: TextView
     private lateinit var profilePicture: ImageView
     private lateinit var logoutBtn: ImageView
-    private lateinit var storageReference: StorageReference
+    private lateinit var storageReference: FirebaseStorage
     private lateinit var userId: String
     private lateinit var mAuth: FirebaseAuth
 
@@ -53,6 +58,7 @@ class ClientProfileFragment : Fragment() {
         profileDesc5 = viewRoot.findViewById(R.id.profileDesc5)
         profileDesc6 = viewRoot.findViewById(R.id.profileDesc6)
         profileDesc7 = viewRoot.findViewById(R.id.profileDesc7)
+        val openTo = viewRoot.findViewById<Button>(R.id.openToButton)
         profilePicture = viewRoot.findViewById(R.id.profilepicture)
         val editProfile: Button = viewRoot.findViewById(R.id.editProfile)
 
@@ -62,7 +68,7 @@ class ClientProfileFragment : Fragment() {
         }
 
         mAuth = FirebaseAuth.getInstance()
-        storageReference = FirebaseStorage.getInstance().reference
+        storageReference = FirebaseStorage.getInstance()
         userId = mAuth.currentUser!!.uid
 
         logoutBtn = viewRoot.findViewById(R.id.logout)
@@ -74,27 +80,53 @@ class ClientProfileFragment : Fragment() {
             requireActivity().finish()
         }
 
-        val fullName = requireActivity().intent.getStringExtra("FullName")
-        val role = requireActivity().intent.getStringExtra("ROLE")
-        if (fullName == null || role == null) {
-            val preferences = requireActivity().getSharedPreferences("user_info", AppCompatActivity.MODE_PRIVATE)
-            val defaultName = "Default Name"
-            val defaultRole = "Default Role"
-            profileName.text = preferences.getString("fullname", defaultName)
-            woodworkerRole.text = preferences.getString("role", defaultRole)
-        } else {
-            profileName.text = fullName
-            woodworkerRole.text = role
+        openTo.setOnClickListener {
+            replaceFragment(ClientProfileFragment())
         }
 
-        storageReference.child("profile_pictures/$userId").downloadUrl
-            .addOnSuccessListener { uri ->
-                Glide.with(requireContext()).load(uri).into(profilePicture)
+        val intent = activity?.intent
+        var fullName = intent?.getStringExtra("FullName")
+        var role = intent?.getStringExtra("ROLE")
+
+        if (fullName == null || role == null) {
+            val preferences = activity?.getSharedPreferences("user_info", Context.MODE_PRIVATE)
+            fullName = preferences?.getString("fullname", "Default Name")
+            role = preferences?.getString("role", "Default Role")
+
+            // Log retrieved values
+            Log.d("Preferences", "Full Name: $fullName, Role: $role")
+        }
+
+
+        profileName.text = fullName
+        woodworkerRole.text = role
+
+        // Fetch profile descriptions from Firestore
+        val db = FirebaseFirestore.getInstance()
+        db.collection("profile_descriptions").document(userId).get()
+            .addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.exists()) {
+                    val profileDescriptions = documentSnapshot.toObject(ProfileDescriptions::class.java)
+                    profileDesc2.text = profileDescriptions?.desc2
+                    profileDesc3.text = profileDescriptions?.desc3
+                    profileDesc4.text = profileDescriptions?.desc4
+                    profileDesc5.text = profileDescriptions?.desc5
+                    profileDesc6.text = profileDescriptions?.desc6
+                    profileDesc7.text = getAccountCreationDate()
+                }
             }
             .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Failed to load profile picture", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Failed to load descriptions", Toast.LENGTH_SHORT).show()
             }
 
+        // Fetch profile picture from Firebase Storage
+        storageReference.reference.child("profile_pictures/$userId").downloadUrl.addOnSuccessListener { uri ->
+            Glide.with(requireContext()).load(uri).into(profilePicture)
+        }.addOnFailureListener { e ->
+            Toast.makeText(context, "Failed to load profile picture", Toast.LENGTH_SHORT).show()
+        }
+
+        // Fetch profile picture from Firebase Storage using ProfilePictureManager
         ProfilePictureManager.fetchProfilePicture(requireContext(), profilePicture)
 
         return viewRoot
@@ -126,33 +158,29 @@ class ClientProfileFragment : Fragment() {
             profileDesc6.text = desc6
             profileDesc7.text = desc7
 
-            storageReference.child("profile_pictures/$userId").downloadUrl
-                .addOnSuccessListener { uri ->
-                    Glide.with(requireContext()).load(uri).into(profilePicture)
-                }
-                .addOnFailureListener { e ->
-                    Toast.makeText(requireContext(), "Failed to load updated profile picture", Toast.LENGTH_SHORT).show()
-                }
+            storageReference.reference.child("profile_pictures/$userId").downloadUrl.addOnSuccessListener { uri ->
+                Glide.with(requireContext()).load(uri).into(profilePicture)
+            }.addOnFailureListener { e ->
+                Toast.makeText(context, "Failed to load updated profile picture", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
-    private fun createPopUpWindow(clientName: String, layout: View) {
-        val inflater = LayoutInflater.from(requireActivity())
-        val popup = inflater.inflate(R.layout.activity_client_profile_followed_dummy, null)
+    // Method to get the account creation date
+    private fun getAccountCreationDate(): String {
+        val creationTimestamp = mAuth.currentUser?.metadata?.creationTimestamp
+        val creationDate = Date(creationTimestamp!!)
+        val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+        return dateFormat.format(creationDate)
+    }
 
-        val clientFollowed: TextView = popup.findViewById(R.id.followingName)
-        clientFollowed.text = "You've Followed $clientName"
-        val confirm: Button = popup.findViewById(R.id.confirmbtn)
 
-        val focusable = true
-        val followedPopUp = PopupWindow(popup, 800, 500, focusable)
-        layout.post {
-            followedPopUp.showAtLocation(layout, Gravity.CENTER, 0, 0)
-        }
-
-        confirm.setOnClickListener {
-            followedPopUp.dismiss()
-        }
+    private fun replaceFragment(frag: Fragment) {
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.contentView, frag)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 
 }
