@@ -117,7 +117,7 @@
                 <LinearLayout
                     android:id="@+id/linear_layout_users"
                     android:layout_width="match_parent"
-                    android:layout_height="540dp"
+                    android:layout_height="wrap_content"
                     android:background="@color/transpa"
                     android:orientation="vertical"
                     tools:ignore="TextSizeCheck">
