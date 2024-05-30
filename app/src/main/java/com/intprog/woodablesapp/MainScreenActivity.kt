@@ -54,35 +54,35 @@ class MainScreenActivity : AppCompatActivity() {
             } else {
                 replaceFragment(WoodworkerProfileFragment())
             }
-            updateIcons(R.drawable.cinbtn, R.drawable.socialicon, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.dgdoc)
+            updateIcons(R.drawable.cinfill, R.drawable.socialicon, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.dgdoc)
             enableAllBtn()
             homeclick.isEnabled = false
         }
 
         communityclick.setOnClickListener {
             replaceFragment(CommunityFragment())
-            updateIcons(R.drawable.dghomebtn, R.drawable.cinchat, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.dgdoc)
+            updateIcons(R.drawable.cinbtn, R.drawable.cinchat, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.dgdoc)
             enableAllBtn()
             communityclick.isEnabled = false
         }
 
         postingclick.setOnClickListener {
             replaceFragment(if ("client" == role) CreateJobCardFragment() else JobListingFragment())
-            updateIcons(R.drawable.dghomebtn, R.drawable.socialicon, R.drawable.cinhammer, R.drawable.dgmessage, R.drawable.dgdoc)
+            updateIcons(R.drawable.cinbtn, R.drawable.socialicon, R.drawable.cinhammer, R.drawable.dgmessage, R.drawable.dgdoc)
             enableAllBtn()
             postingclick.isEnabled = false
         }
 
         chatclick.setOnClickListener {
             replaceFragment(MessageChatViewFragment())
-            updateIcons(R.drawable.dghomebtn, R.drawable.socialicon, R.drawable.dghammer, R.drawable.cinsocial, R.drawable.dgdoc)
+            updateIcons(R.drawable.cinbtn, R.drawable.socialicon, R.drawable.dghammer, R.drawable.cinsocial, R.drawable.dgdoc)
             enableAllBtn()
             chatclick.isEnabled = false
         }
 
         docclick.setOnClickListener {
             replaceFragment(LearnCourseFragment())
-            updateIcons(R.drawable.dghomebtn, R.drawable.socialicon, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.cindoc)
+            updateIcons(R.drawable.cinbtn, R.drawable.socialicon, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.cindoc)
             enableAllBtn()
             docclick.isEnabled = false
         }

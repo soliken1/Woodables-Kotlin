@@ -3,15 +3,15 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     android:layout_marginBottom="8dp"
-    android:background="@color/white"
-    android:backgroundTint="@color/whitebeigge"
+    android:background="@color/backgroundcolor"
+    android:backgroundTint="@color/secondarycolor"
     android:elevation="4dp"
-    android:padding="16dp"
     android:radius="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/secondarycolor"
         android:orientation="vertical">
 
         <LinearLayout

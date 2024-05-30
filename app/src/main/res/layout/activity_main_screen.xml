@@ -38,7 +38,7 @@
             android:clickable="true"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:src="@drawable/socialicon" />
+            android:src="@drawable/dghomebtn" />
 
         <ImageView
             android:id="@+id/hammer"
@@ -78,7 +78,7 @@
             android:clickable="true"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:src="@drawable/cinbtn" />
+            android:src="@drawable/cinfill" />
 
     </LinearLayout>
     <!--Ari ra kutob ang navagation bar -->

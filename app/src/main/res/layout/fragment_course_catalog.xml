@@ -14,13 +14,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/white"/>
+            android:background="@color/accentcolor"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:gravity="center_vertical"
-            android:background="@color/cinnamon"
+            android:background="@color/primarycolor"
             android:orientation="horizontal">
 
             <ImageView
@@ -28,7 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.50"
-                android:background="@color/cinnamon"
+                android:background="@color/primarycolor"
                 android:padding="10dp"
                 android:src="@drawable/leftarrow" />
 
@@ -38,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:padding="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/cinnamon"
+                android:background="@color/primarycolor"
                 android:src="@drawable/woodableslogo" />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:layout_weight="3"
                 android:text="I'm Learning"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="@color/textcolor"
                 android:textStyle="bold"
                 android:textSize="25sp" />
 
@@ -57,13 +57,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/white"/>
+            android:background="@color/accentcolor"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:gravity="center_vertical"
-            android:background="@color/greywhite"
+            android:background="@color/secondarycolor"
             android:orientation="horizontal">
 
             <Button
@@ -73,9 +73,9 @@
                 android:padding="5dp"
                 android:layout_marginStart="5dp"
                 android:layout_weight="0.25"
-                android:backgroundTint="@color/cinnamon"
+                android:backgroundTint="@color/primarycolor"
                 android:text="Browse"
-
+                android:textColor="@color/textcolor"
                 android:textSize="11sp"/>
 
             <Button
@@ -85,8 +85,9 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="0.25"
-                android:backgroundTint="@color/cinnamon"
+                android:backgroundTint="@color/primarycolor"
                 android:text="Assesment"
+                android:textColor="@color/textcolor"
                 android:textSize="8sp"/>
 
         </LinearLayout>
@@ -94,12 +95,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/white"/>
+            android:background="@color/accentcolor"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center_vertical"
+            android:background="@color/backgroundcolor"
             android:orientation="horizontal">
 
             <TextView
@@ -117,11 +119,12 @@
             android:layout_width="370dp"
             android:layout_height="2dp"
             android:layout_gravity="center"
-            android:background="#D6AE80" />
+            android:background="@color/accentcolor" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/backgroundcolor"
             android:layout_weight="2"
             android:orientation="vertical">
 

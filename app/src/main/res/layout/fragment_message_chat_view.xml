@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@color/cinnamon"
+            android:background="@color/primarycolor"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
@@ -40,7 +40,7 @@
                 android:fontFamily="@font/spartan_bold"
                 android:layout_weight="1.25"
                 android:text="@string/chats"
-                android:textColor="#ffff"
+                android:textColor="@color/textcolor"
                 android:textSize="20sp" />
 
             <ImageView
@@ -66,7 +66,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@color/textcolor"
+            android:background="@color/secondarycolor"
             android:orientation="horizontal">
 
             <TextView
@@ -89,7 +89,7 @@
                 android:fontFamily="@font/spartan_medium"
                 android:gravity="center"
                 android:text="@string/direct"
-                android:textColor="#ffff" />
+                android:textColor="@color/textcolor" />
 
             <TextView
                 android:layout_width="140dp"
@@ -98,7 +98,7 @@
                 android:fontFamily="@font/spartan_medium"
                 android:gravity="center"
                 android:text="@string/project_discussion"
-                android:textColor="#ffff"
+                android:textColor="@color/textcolor"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="20dp"/>
 
@@ -118,7 +118,7 @@
                     android:id="@+id/linear_layout_users"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/transpa"
+                    android:background="@color/backgroundcolor"
                     android:orientation="vertical"
                     tools:ignore="TextSizeCheck">
 

@@ -3,19 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
     tools:context=".JobListingFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/white">
+        android:background="@color/backgroundcolor">
 
         <LinearLayout
             android:id="@+id/searchbargroup"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@color/cinnamon"
+            android:background="@color/primarycolor"
             android:orientation="horizontal">
 
             <TextView
@@ -26,7 +27,7 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textSize="24sp"
-                android:textColor="@color/white"
+                android:textColor="@color/textcolor"
                 android:layout_marginLeft="20dp"/>
 
             <ImageView
@@ -50,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="8dp"
+            android:background="@color/backgroundcolor"
             android:orientation="horizontal">
 
             <SearchView
@@ -58,7 +60,7 @@
                 android:layout_height="35dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/searchview_corners"
-                android:backgroundTint="@color/greywhite"
+                android:backgroundTint="@color/white"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="5dp"/>
 
@@ -71,11 +73,12 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_below="@+id/searchbargroup"
-            android:background="@color/white" />
+            android:background="@color/accentcolor" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/backgroundcolor"
             android:layout_weight="3">
 
             <LinearLayout
@@ -83,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@color/white">
+                android:background="@color/backgroundcolor">
 
             </LinearLayout>
         </ScrollView>
