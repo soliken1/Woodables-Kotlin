@@ -103,7 +103,7 @@
                 android:textStyle="bold"
                 android:textSize="18dp"
                 android:text="Course I've Enrolled In"
-                android:textColor="@color/darkgrey"
+                android:textColor="@color/textcolor"
                 android:layout_marginStart="25dp"/>
 
             <Button

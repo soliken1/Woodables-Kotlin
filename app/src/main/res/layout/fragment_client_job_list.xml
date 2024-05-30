@@ -76,7 +76,7 @@
                 android:paddingTop="4dp"
                 android:text="My Job Cards"
                 android:textAlignment="center"
-                android:textColor="@color/darkgrey"
+                android:textColor="@color/textcolor"
                 android:textSize="20sp" />
 
         </RelativeLayout>

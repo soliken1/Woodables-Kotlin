@@ -8,7 +8,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">#151803</color>
+
     <color name="searchBar">#d4d3be</color>
     <color name="peach">#eedac3</color>
     <color name="btnColor">#D6AE80</color>
@@ -18,11 +18,17 @@
     <color name="corn">#E6A800</color>
     <color name="schoolbusyellow">#FFD900</color>
     <color name="transpa">#8FEEDAC3</color>
-    <color name="darkgrey">#1E1E1E</color>
+
     <color name="red">#E72929</color>
     <color name="blue">#5AB2FF</color>
     <color name="greywhite">#D9D9D9</color>
     <color name="peachy">#FFCBCB</color>
     <color name="babyblue">#C0D6E8</color>
     <color name="whitebeigge">#F6F5F2</color>
+
+    <color name="accentcolor">#B5C18E</color>  <!-- For Unique actions eg. progress bar, separator aka/ breakline-->
+    <color name="secondarycolor">#FFE0B5</color> <!-- For background of list item or for secondary use -->
+    <color name="backgroundcolor">#FFF2D7</color> <!-- For Background, example main layout of the fragment/activity -->
+    <color name="textcolor">#1E1E1E</color> <!-- For All Text -->
+    <color name="primarycolor">#D8AE7E</color> <!-- For All Navs and Buttons -->
 </resources>

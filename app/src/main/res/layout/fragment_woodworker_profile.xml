@@ -5,284 +5,195 @@
     android:layout_height="match_parent"
     tools:context=".WoodworkerProfileFragment">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:orientation="vertical"
+        android:background="@color/backgroundcolor">
 
         <LinearLayout
             android:id="@+id/searchbargroup"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:layout_alignParentTop="true"
-            android:background="@color/cinnamon"
+            android:background="@color/primarycolor"
             android:orientation="horizontal">
 
-            <SearchView
-                android:id="@+id/searchBarProfile"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_weight="3"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/textbox_4curvedcorners"
-                android:backgroundTint="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="5dp"
-                android:textColor="@color/black"/>
-
-            <ImageView
-                android:id="@+id/logout"
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:padding="10dp"
-                android:clickable="true"
-                android:layout_weight="0.5"
-                android:src="@drawable/logout"
-                android:background="@color/cinnamon"/>
+                android:layout_weight="3"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:textColor="@color/textcolor"
+                android:text="My Profile"
+                android:textSize="20sp" />
+
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/profilebackground"
+        <LinearLayout
+            android:id="@+id/profilecorner"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/peach"
-            android:scaleType="fitXY"
-            android:contentDescription="@string/profilebg"
-            android:layout_below="@id/searchbargroup" />
-
-        <ImageView
-            android:id="@+id/profilepicture"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="200dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/default_profile"
-            android:adjustViewBounds="true"
-            android:background="@drawable/rounded_corners"
-            android:clipToOutline="true"
-            android:contentDescription="@string/logo"
-            android:cropToPadding="true"
-            android:scaleType="centerCrop"/>
-
-        <TextView
-            android:id="@+id/profileName"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:text="@string/aj_von"
-            android:textColor="@color/darkgrey"
-            android:textStyle="bold"
-            android:layout_below="@+id/profilepicture"
-            android:textSize="18sp"/>
+            android:layout_margin="15dp"
+            android:padding="10dp"
+            android:background="@drawable/textbox_4curvedcorners"
+            android:backgroundTint="@color/secondarycolor"
+            android:elevation="8dp">
 
-        <TextView
-            android:id="@+id/profileCategory"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/profilepicture"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/rounded_corners"
+                android:clipToOutline="true"
+                android:contentDescription="@string/logo"
+                android:cropToPadding="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_profile" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="bottom"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/profileName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:textColor="@color/textcolor"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="Username"/>
+
+                <TextView
+                    android:id="@+id/profileCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor"
+                    android:layout_below="@+id/profileName"
+                    android:text="User Role"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:textColor="@color/darkgrey"
-            android:layout_below="@+id/profileName"
-            android:text="@string/adv_carpenter"/>
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:background="@drawable/textbox_4curvedcorners"
+            android:backgroundTint="@color/secondarycolor"
+            android:elevation="8dp"
+            android:orientation="vertical">
+            
+            <TextView
+                android:id="@+id/accinfolabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:textColor="@color/textcolor"
+                android:textStyle="bold"
+                android:text="Account Information"/>
 
+            <TextView
+                android:id="@+id/profileDesc2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:textColor="@color/textcolor"
+                android:text="Address: Not Available"/>
+            <TextView
+                android:id="@+id/profileDesc3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:textColor="@color/textcolor"
+                android:text="Phone Number: Not Available"/>
+            <TextView
+                android:id="@+id/profileDesc4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:textColor="@color/textcolor"
+                android:text="Facebook: Not Available"/>
+            <TextView
+                android:id="@+id/profileDesc5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:textColor="@color/textcolor"
+                android:text="Email: Not Available"/>
+            <TextView
+                android:id="@+id/profileDesc6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:textColor="@color/textcolor"
+                android:text="Profile Link: Not Available"/>
+            <TextView
+                android:id="@+id/profileDesc7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:textColor="@color/textcolor"
+                android:text="Joined: Not Available"/>
+            
+            
+        </LinearLayout>
+        
         <LinearLayout
             android:id="@+id/optbuttons"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:orientation="horizontal"
-            android:layout_below="@id/profileCategory">
-
-            <Button
-                android:id="@+id/openToButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginEnd="10dp"
-                android:textSize="13sp"
-                android:backgroundTint="@color/cinnamon"
-                android:shadowColor="@color/peach"
-                android:text="@string/opento"/>
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/editProfile"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
                 android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/primarycolor"
+                android:text="@string/edit_prof"
                 android:textSize="13sp"
-                android:backgroundTint="@color/cinnamon"
-                android:text="@string/edit_prof"/>
+                android:textColor="@color/textcolor"/>
 
             <Button
-                android:id="@+id/moreButton"
-                android:layout_width="wrap_content"
+                android:id="@+id/logout"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.50"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="@color/cinnamon"
-                android:text="@string/dotdot"/>
+                android:layout_weight="1"
+                android:backgroundTint="@color/primarycolor"
+                android:text="Logout"
+                android:textSize="13sp"
+                android:textColor="@color/textcolor" />
 
         </LinearLayout>
+        
 
-        <View
-            android:id="@+id/breakline"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/darkgrey"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/optbuttons"/>
 
-        <TextView
-            android:id="@+id/introduction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/darkgrey"
-            android:text="@string/introtext"
-            android:layout_below="@id/breakline"/>
-
-        <ImageView
-            android:id="@+id/carpenterlogo"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:contentDescription="@string/freelance_carpenter"
-            android:layout_below="@id/introduction"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/cintools"/>
-
-        <TextView
-            android:id="@+id/profileDesc2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/introduction"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toEndOf="@+id/carpenterlogo"
-            android:text="@string/freelance_carpenter"
-            android:textColor="@color/darkgrey" />
-
-        <ImageView
-            android:id="@+id/carpenterlogo2"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:contentDescription="@string/former_carpenter"
-            android:src="@drawable/cintools"
-            android:layout_below="@id/profileDesc2"
-            android:layout_marginStart="10dp"/>
-
-        <TextView
-            android:id="@+id/profileDesc3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@id/carpenterlogo2"
-            android:textColor="@color/darkgrey"
-            android:text="@string/former_carpenter"
-            android:layout_below="@id/profileDesc2"/>
-
-        <ImageView
-            android:id="@+id/graduationcap"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_below="@id/profileDesc3"
-            android:src="@drawable/cincap"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/studied_in"
-            android:layout_marginStart="10dp"/>
-
-        <TextView
-            android:id="@+id/profileDesc4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profileDesc3"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/graduationcap"
-            android:text="@string/studied_in"
-            android:textColor="@color/darkgrey" />
-
-        <ImageView
-            android:id="@+id/paperdocu"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_below="@id/profileDesc4"
-            android:src="@drawable/cinpapers"
-            android:contentDescription="@string/studied_in"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"/>
-
-        <TextView
-            android:id="@+id/profileDesc5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/profileDesc4"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginTop="7dp"
-            android:layout_toEndOf="@id/paperdocu"
-            android:textColor="@color/darkgrey"
-            android:contentDescription="@string/completed_selflearning"
-            android:text="@string/completed_selflearning"/>
-
-        <ImageView
-            android:id="@+id/locationlogo"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_below="@id/profileDesc5"
-            android:src="@drawable/cinloc"
-            android:contentDescription="@string/City_b"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="10dp"/>
-
-        <TextView
-            android:id="@+id/profileDesc6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/darkgrey"
-            android:layout_toEndOf="@+id/locationlogo"
-            android:text="@string/City_b"
-            android:layout_below="@id/profileDesc5"/>
-
-        <ImageView
-            android:id="@+id/clock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profileDesc6"
-            android:src="@drawable/clock"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/joined"
-            android:layout_marginStart="10dp"/>
-
-        <TextView
-            android:id="@+id/profileDesc7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/clock"
-            android:textColor="@color/darkgrey"
-            android:text="@string/joined"
-            android:layout_below="@id/profileDesc6"/>
-
-        <View
-            android:id="@+id/BreakLine"
-            android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
-            android:layout_height="2dp"
-            android:layout_below="@id/profileDesc7"
-            android:background="@color/darkgrey"/>
-
-    </RelativeLayout>
+    </LinearLayout>
 </FrameLayout>

@@ -77,7 +77,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/darkgrey"
+                            android:textColor="@color/textcolor"
                             android:layout_marginStart="30dp"
                             android:layout_marginTop="50dp"
                             android:textSize="16sp"
@@ -89,8 +89,8 @@
                             android:paddingStart="10dp"
                             android:layout_marginStart="30dp"
                             android:layout_marginEnd="30dp"
-                            android:textColor="@color/darkgrey"
-                            android:textColorHint="@color/darkgrey"
+                            android:textColor="@color/textcolor"
+                            android:textColorHint="@color/textcolor"
                             android:textSize="16sp"
                             android:hint="Enter Company/Individual Name"
                             android:background="@drawable/input_border"/>
@@ -98,7 +98,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
-                            android:textColor="@color/darkgrey"
+                            android:textColor="@color/textcolor"
                             android:layout_marginTop="10dp"
                             android:textSize="16sp"
                             android:text="Job Title"/>
@@ -109,8 +109,8 @@
                             android:paddingStart="10dp"
                             android:layout_marginStart="30dp"
                             android:layout_marginEnd="30dp"
-                            android:textColor="@color/darkgrey"
-                            android:textColorHint="@color/darkgrey"
+                            android:textColor="@color/textcolor"
+                            android:textColorHint="@color/textcolor"
                             android:textSize="16sp"
                             android:hint="Enter Job Title"
                             android:background="@drawable/input_border"/>
@@ -118,7 +118,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
-                            android:textColor="@color/darkgrey"
+                            android:textColor="@color/textcolor"
                             android:layout_marginTop="10dp"
                             android:textSize="16sp"
                             android:text="Pay Range"/>
@@ -129,8 +129,8 @@
                             android:paddingStart="10dp"
                             android:layout_marginStart="30dp"
                             android:layout_marginEnd="30dp"
-                            android:textColor="@color/darkgrey"
-                            android:textColorHint="@color/darkgrey"
+                            android:textColor="@color/textcolor"
+                            android:textColorHint="@color/textcolor"
                             android:textSize="16sp"
                             android:hint="1000 ~ 99999"
                             android:background="@drawable/input_border"/>
@@ -141,7 +141,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:text="Do you have benefits?"
-                            android:textColor="@color/darkgrey"
+                            android:textColor="@color/textcolor"
                             android:padding="10dp" />
 
 
@@ -168,7 +168,7 @@
                         android:layout_marginBottom="20dp"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textColor="@color/darkgrey"/>
+                        android:textColor="@color/textcolor"/>
                     <LinearLayout
 
                         android:layout_width="match_parent"
@@ -184,8 +184,8 @@
                             android:layout_height="match_parent"
                             android:background="@android:color/transparent"
                             android:hint="Enter Specific Details"
-                            android:textColor="@color/darkgrey"
-                            android:textColorHint="@color/darkgrey"
+                            android:textColor="@color/textcolor"
+                            android:textColorHint="@color/textcolor"
                             android:padding="5dp"
                             android:inputType="text"
                             android:textSize="16sp"
@@ -201,7 +201,7 @@
                         android:text="Requirements"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
-                        android:textColor="@color/darkgrey"
+                        android:textColor="@color/textcolor"
                         android:textSize="18sp"
                         android:textStyle="bold"/>
 
@@ -223,8 +223,8 @@
                             android:background="@drawable/input_border"
                             android:hint="Enter Requirements"
                             android:textSize="12sp"
-                            android:textColor="@color/darkgrey"
-                            android:textColorHint="@color/darkgrey"/>
+                            android:textColor="@color/textcolor"
+                            android:textColorHint="@color/textcolor"/>
                         <EditText
                             android:id="@+id/requirements2"
                             android:layout_width="match_parent"
@@ -235,8 +235,8 @@
                             android:background="@drawable/input_border"
                             android:hint="Enter Other Requirements"
                             android:textSize="12sp"
-                            android:textColor="@color/darkgrey"
-                            android:textColorHint="@color/darkgrey"/>
+                            android:textColor="@color/textcolor"
+                            android:textColorHint="@color/textcolor"/>
 
                         <EditText
                             android:id="@+id/requirements3"
@@ -248,8 +248,8 @@
                             android:background="@drawable/input_border"
                             android:hint="Enter Other Requirements"
                             android:textSize="12sp"
-                            android:textColor="@color/darkgrey"
-                            android:textColorHint="@color/darkgrey"/>
+                            android:textColor="@color/textcolor"
+                            android:textColorHint="@color/textcolor"/>
                     </LinearLayout>
 
                     <Button

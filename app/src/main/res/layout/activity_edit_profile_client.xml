@@ -14,14 +14,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/white">
+            android:background="@color/backgroundcolor">
 
             <LinearLayout
                 android:id="@+id/headerLayout"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_alignParentTop="true"
-                android:background="@color/cinnamon"
+                android:background="@color/primarycolor"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -30,8 +30,7 @@
                     android:layout_height="match_parent"
                     android:padding="10dp"
                     android:layout_weight="0.5"
-                    android:src="@drawable/leftarrow"
-                    android:background="@color/cinnamon"/>
+                    android:src="@drawable/leftarrow"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -39,8 +38,8 @@
                     android:layout_weight="3"
                     android:padding="10dp"
                     android:gravity="center_vertical"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/spartan_medium"
+                    android:textColor="@color/textcolor"
+                    android:fontFamily="@font/spartan_bold"
                     android:text="General Information"/>
 
             </LinearLayout>
@@ -109,7 +108,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:layout_weight="1"
@@ -121,7 +120,7 @@
 
                     <EditText
                         android:id="@+id/editFirstName"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="4"
                         android:layout_marginEnd="20dp"
@@ -143,7 +142,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
@@ -155,7 +154,7 @@
 
                     <EditText
                         android:id="@+id/editLastName"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:paddingStart="6dp"
                         android:layout_weight="4"
@@ -177,7 +176,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
@@ -189,10 +188,10 @@
 
                     <EditText
                         android:id="@+id/editMiddleName"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:paddingStart="6dp"
-                        android:layout_weight="2"
+                        android:layout_weight="4"
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/textbox_4curvedcorners"/>
                 </LinearLayout>
@@ -212,7 +211,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
@@ -224,9 +223,9 @@
 
                     <EditText
                         android:id="@+id/editCompanyName"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1.5"
+                        android:layout_weight="2"
                         android:paddingStart="6dp"
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/textbox_4curvedcorners"/>
@@ -259,7 +258,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -267,13 +266,13 @@
                     android:layout_marginStart="20dp"
                     android:fontFamily="@font/spartan_medium"
                     android:textColor="@color/black"
-                    android:text="Profile Desc 2"/>
+                    android:text="Address"/>
 
                 <EditText
                     android:id="@+id/profileDesc2"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_weight="1.25"
                     android:paddingStart="6dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/textbox_4curvedcorners"/>
@@ -287,7 +286,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -295,13 +294,13 @@
                     android:layout_marginStart="20dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/spartan_medium"
-                    android:text="Profile Desc 3"/>
+                    android:text="Phone Number"/>
 
                 <EditText
                     android:id="@+id/profileDesc3"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_weight="1.25"
                     android:layout_marginEnd="20dp"
                     android:paddingStart="6dp"
                     android:background="@drawable/textbox_4curvedcorners"/>
@@ -314,7 +313,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -322,13 +321,13 @@
                     android:layout_marginStart="20dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/spartan_medium"
-                    android:text="Profile Desc 4"/>
+                    android:text="Facebook"/>
 
                 <EditText
                     android:id="@+id/profileDesc4"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_weight="1.25"
                     android:layout_marginEnd="20dp"
                     android:paddingStart="6dp"
                     android:background="@drawable/textbox_4curvedcorners"/>
@@ -342,7 +341,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -350,13 +349,13 @@
                     android:layout_marginStart="20dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/spartan_medium"
-                    android:text="Profile Desc 5"/>
+                    android:text="Email"/>
 
                 <EditText
                     android:id="@+id/profileDesc5"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_weight="1.25"
                     android:layout_marginEnd="20dp"
                     android:paddingStart="6dp"
                     android:background="@drawable/textbox_4curvedcorners"/>
@@ -370,7 +369,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -378,13 +377,13 @@
                     android:layout_marginStart="20dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/spartan_medium"
-                    android:text="Profile Desc 6"/>
+                    android:text="Profile Link"/>
 
                 <EditText
                     android:id="@+id/profileDesc6"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_weight="1.25"
                     android:layout_marginEnd="20dp"
                     android:paddingStart="6dp"
                     android:background="@drawable/textbox_4curvedcorners"/>
@@ -397,7 +396,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -405,13 +404,13 @@
                     android:layout_marginStart="20dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/spartan_medium"
-                    android:text="Profile Desc 7"/>
+                    android:text="Joined"/>
 
                 <EditText
                     android:id="@+id/profileDesc7"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_weight="1.25"
                     android:layout_marginEnd="20dp"
                     android:paddingStart="6dp"
                     android:background="@drawable/textbox_4curvedcorners"/>
@@ -425,7 +424,8 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
-                android:backgroundTint="@color/cinnamon"
+                android:backgroundTint="@color/primarycolor"
+                android:textColor="@color/textcolor"
                 android:text="@string/saveprofile"/>
 
         </LinearLayout>

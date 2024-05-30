@@ -39,7 +39,7 @@ class ClientProfileFragment : Fragment() {
     private lateinit var profileDesc6: TextView
     private lateinit var profileDesc7: TextView
     private lateinit var profilePicture: ImageView
-    private lateinit var logoutBtn: ImageView
+    private lateinit var logoutBtn: Button
     private lateinit var storageReference: FirebaseStorage
     private lateinit var userId: String
     private lateinit var mAuth: FirebaseAuth
@@ -58,9 +58,9 @@ class ClientProfileFragment : Fragment() {
         profileDesc5 = viewRoot.findViewById(R.id.profileDesc5)
         profileDesc6 = viewRoot.findViewById(R.id.profileDesc6)
         profileDesc7 = viewRoot.findViewById(R.id.profileDesc7)
-        val openTo = viewRoot.findViewById<Button>(R.id.openToButton)
         profilePicture = viewRoot.findViewById(R.id.profilepicture)
         val editProfile: Button = viewRoot.findViewById(R.id.editProfile)
+
 
         editProfile.setOnClickListener {
             val intent = Intent(requireContext(), EditProfileClientActivity::class.java)
@@ -72,6 +72,7 @@ class ClientProfileFragment : Fragment() {
         userId = mAuth.currentUser!!.uid
 
         logoutBtn = viewRoot.findViewById(R.id.logout)
+
         logoutBtn.setOnClickListener {
             mAuth.signOut()
             val intent = Intent(requireActivity(), LoginActivity::class.java)
@@ -80,9 +81,6 @@ class ClientProfileFragment : Fragment() {
             requireActivity().finish()
         }
 
-        openTo.setOnClickListener {
-            replaceFragment(ClientProfileFragment())
-        }
 
         val intent = activity?.intent
         var fullName = intent?.getStringExtra("FullName")
@@ -107,12 +105,12 @@ class ClientProfileFragment : Fragment() {
             .addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot.exists()) {
                     val profileDescriptions = documentSnapshot.toObject(ProfileDescriptions::class.java)
-                    profileDesc2.text = profileDescriptions?.desc2
-                    profileDesc3.text = profileDescriptions?.desc3
-                    profileDesc4.text = profileDescriptions?.desc4
-                    profileDesc5.text = profileDescriptions?.desc5
-                    profileDesc6.text = profileDescriptions?.desc6
-                    profileDesc7.text = getAccountCreationDate()
+                    profileDesc2.text = "Address: " + profileDescriptions?.desc2
+                    profileDesc3.text = "Phone Number: " +profileDescriptions?.desc3
+                    profileDesc4.text = "Facebook: " +profileDescriptions?.desc4
+                    profileDesc5.text = "Email: " +profileDescriptions?.desc5
+                    profileDesc6.text = "Profile Link: " +profileDescriptions?.desc6
+                    profileDesc7.text = "Joined: " +getAccountCreationDate()
                 }
             }
             .addOnFailureListener { e ->
