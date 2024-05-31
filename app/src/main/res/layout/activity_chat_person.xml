@@ -3,7 +3,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/backgroundcolor"
     android:orientation="vertical">
 
     <!-- Header layout with back arrow, profile image, and name -->
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:padding="6dp"
-        android:background="@color/transpa"
+        android:background="@color/primarycolor"
         android:orientation="horizontal">
 
         <ImageView
@@ -79,16 +79,9 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:layout_marginBottom="25dp"
-        android:background="@color/transpa">
+        android:background="@color/primarycolor">
 
-        <ImageView
-            android:id="@+id/plus_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/plusicon"
-            android:layout_weight="0.50"
-            android:contentDescription="Add image or doc"
-            android:padding="10dp" />
+
 
         <EditText
             android:id="@+id/message_input"
@@ -97,6 +90,7 @@
             android:layout_weight="3"
             android:hint="Type a message"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
             android:padding="10dp"
             android:background="@drawable/textbox_4curvedcorners"

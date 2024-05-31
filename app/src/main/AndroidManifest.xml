@@ -55,9 +55,6 @@
             <!--  -->
         </activity>
         <activity
-            android:name=".MessageSettingActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainScreenActivity"
             android:exported="false" />
         <activity

@@ -31,16 +31,11 @@ class MessageChatViewFragment : Fragment() {
 
         val linearLayoutUsers = viewRoot.findViewById<LinearLayout>(R.id.linear_layout_users)
 
-        tosetting = viewRoot.findViewById(R.id.toSetting)
 
         mAuth = FirebaseAuth.getInstance()
         storageReference = FirebaseStorage.getInstance().reference
         userId = mAuth.currentUser!!.uid
 
-        tosetting.setOnClickListener{
-            val toSettings = Intent(viewRoot.context, MessageSettingActivity::class.java)
-            startActivity(toSettings)
-        }
 
         val profilePicture = viewRoot.findViewById<ImageView>(R.id.profilepicture)
         fetchProfilePicture(profilePicture)

@@ -2,6 +2,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@drawable/textbox_4curvedcorners"
+    android:backgroundTint="@color/backgroundcolor"
     android:padding="20dp">
 
     <ImageView
@@ -17,6 +19,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/textcolor"
         android:layout_marginBottom="10dp" />
 
     <TextView
@@ -24,18 +27,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:textColor="@color/textcolor"
         android:layout_marginBottom="20dp" />
 
     <TextView
         android:id="@+id/dialog_course_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/textcolor"
         android:textSize="16sp"
         android:layout_marginBottom="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:orientation="horizontal"
         android:layout_marginBottom="30dp"
         android:gravity="center">
@@ -43,18 +48,19 @@
         <Button
             android:id="@+id/button_launch"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/accentcolor"
             android:text="Launch Course"
-            android:layout_marginStart="10dp" />
+            android:textColor="@color/textcolor" />
 
         <Button
             android:id="@+id/button_drop"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:backgroundTint="@color/red"
             android:text="Drop Course"
             android:visibility="visible"
+            android:textColor="@color/textcolor"
             android:layout_marginStart="10dp" />
 
     </LinearLayout>

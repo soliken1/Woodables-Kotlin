@@ -2,24 +2,24 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="16dp"
     android:layout_marginBottom="8dp"
-    android:background="@color/white"
-    android:backgroundTint="@color/whitebeigge"
-    android:elevation="4dp"
-    android:padding="16dp"
-    android:radius="8dp">
+    android:background="@drawable/textbox_4curvedcorners"
+    android:backgroundTint="@color/secondarycolor"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="16dp">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:padding="20dp"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/companyNameTextView"
             android:layout_width="match_parent"
             android:padding="2dp"
-            android:layout_marginLeft="10dp"
             android:textStyle="bold"
             android:textSize="16sp"
             android:textColor="@color/textcolor"
@@ -32,7 +32,6 @@
             android:layout_height="wrap_content"
             android:padding="2dp"
             android:textColor="@color/textcolor"
-            android:layout_marginLeft="10dp"
             android:text="Job Title" />
 
         <TextView
@@ -41,7 +40,6 @@
             android:layout_height="wrap_content"
             android:padding="2dp"
             android:textColor="@color/textcolor"
-            android:layout_marginLeft="10dp"
             android:text="Pay Range" />
 
         <TextView
@@ -50,7 +48,6 @@
             android:layout_height="wrap_content"
             android:padding="2dp"
             android:textColor="@color/textcolor"
-            android:layout_marginLeft="10dp"
             android:text="Details" />
 
         <TextView
@@ -59,7 +56,6 @@
             android:layout_height="wrap_content"
             android:padding="2dp"
             android:textColor="@color/textcolor"
-            android:layout_marginLeft="10dp"
             android:text="Requirements 1" />
 
         <TextView
@@ -67,7 +63,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:layout_marginLeft="10dp"
             android:textColor="@color/textcolor"
             android:text="Requirements 2" />
 
@@ -76,7 +71,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:layout_marginLeft="10dp"
             android:textColor="@color/textcolor"
             android:text="Requirements 3" />
 
@@ -85,7 +79,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:layout_marginLeft="10dp"
             android:textColor="@color/textcolor"
             android:text="Has Benefits" />
 

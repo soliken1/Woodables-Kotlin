@@ -25,7 +25,9 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var progressDialog: ProgressDialog
 
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var mUser: FirebaseUser
+
+    //private lateinit var mUser: FirebaseUser
+
     private lateinit var db: FirebaseFirestore
 
     private val emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$".toRegex()
@@ -41,7 +43,11 @@ class RegisterActivity : AppCompatActivity() {
         emailText = findViewById(R.id.email)
         progressDialog = ProgressDialog(this)
         mAuth = FirebaseAuth.getInstance()
-        mUser = mAuth.currentUser!!
+        //Error causes to crash after UserInfoActivity
+        //Scenario is Fill info then click toRegister Button from user Info then crashes
+        //Possible reason mUser, after removal can create account without a problem
+        //mUser = mAuth.currentUser!!
+
         db = FirebaseFirestore.getInstance()
 
         logclick.setOnClickListener {

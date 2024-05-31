@@ -52,15 +52,6 @@
                 android:src="@drawable/search"
                 android:contentDescription="@string/search"/>
 
-            <ImageView
-                android:id="@+id/toSetting"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:layout_weight="0.50"
-                android:src="@drawable/menu"
-                android:contentDescription="@string/menu"/>
-
         </LinearLayout>
 
         <RelativeLayout

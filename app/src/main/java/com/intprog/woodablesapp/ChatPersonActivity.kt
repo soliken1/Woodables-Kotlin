@@ -180,10 +180,10 @@ class ChatPersonActivity : AppCompatActivity() {
 
         // Find views within the inflated layout
         val messageTextView: TextView = messageView.findViewById(R.id.message_text)
-        val senderImage: ImageView = messageView.findViewById(R.id.message_sender_image)
 
         // Set message text
         messageTextView.text = messageText
+
 
         // Set background colors and gravity based on sender and receiver
         val layoutParams = LinearLayout.LayoutParams(
@@ -194,12 +194,16 @@ class ChatPersonActivity : AppCompatActivity() {
         if (senderID == currentUserID) {
             // Set layout parameters for sender messages (right-aligned, blue background)
             layoutParams.gravity = Gravity.END or Gravity.CENTER_VERTICAL
+            layoutParams.marginEnd = 20
             messageView.setBackgroundResource(R.drawable.bluemsg_bg)
+            messageTextView.gravity = Gravity.END
             messageTextView.setTextColor(Color.WHITE)
         } else {
             // Set layout parameters for receiver messages (left-aligned, grey background)
             layoutParams.gravity = Gravity.START or Gravity.CENTER_VERTICAL
+            layoutParams.marginStart = 20
             messageView.setBackgroundResource(R.drawable.whitemsg_bg)
+            messageTextView.gravity = Gravity.START
             messageTextView.setTextColor(Color.BLACK)
         }
         messageView.layoutParams = layoutParams

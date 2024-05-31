@@ -37,7 +37,9 @@ class UserInfoWoodworkerFragment : Fragment() {
             toRegister.putExtra("MName", mNameText.text.toString())
             toRegister.putExtra("Role", activity.getSelectedRole())
 
+            activity.overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
             startActivity(toRegister)
+            activity.finish()
         }
 
         return viewRoot
