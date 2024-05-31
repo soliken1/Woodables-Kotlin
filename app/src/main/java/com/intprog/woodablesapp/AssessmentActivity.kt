@@ -105,13 +105,25 @@ class AssessmentActivity : AppCompatActivity() {
             val uid = currentUser.uid
             val email = sharedPreferences.getString("userEmail", "") ?: ""
 
+            // Validate that all required fields are filled
+            val lastName = lNameIn.text.toString().trim()
+            val firstName = fNameIn.text.toString().trim()
+            val middleName = mNameIn.text.toString().trim()
+            val dateOfAssessment = doaIn.text.toString().trim()
+            val expertise = expertiseIn.text.toString().trim()
+
+            if (lastName.isEmpty() || firstName.isEmpty() || middleName.isEmpty() || dateOfAssessment.isEmpty() || expertise.isEmpty()) {
+                Toast.makeText(this, "Please fill in all the fields", Toast.LENGTH_SHORT).show()
+                return
+            }
+
             fetchProfileDescriptions(uid) { desc2, desc3, desc4, desc5, desc6, desc7 ->
                 val assessmentData = hashMapOf(
-                    "lastName" to lNameIn.text.toString(),
-                    "firstName" to fNameIn.text.toString(),
-                    "middleName" to mNameIn.text.toString(),
-                    "dateOfAssessment" to doaIn.text.toString(),
-                    "expertise" to expertiseIn.text.toString(),
+                    "lastName" to lastName,
+                    "firstName" to firstName,
+                    "middleName" to middleName,
+                    "dateOfAssessment" to dateOfAssessment,
+                    "expertise" to expertise,
                     "email" to email,
                     // Add profile descriptions to assessment data
                     "exp_1" to desc2,
@@ -125,7 +137,7 @@ class AssessmentActivity : AppCompatActivity() {
                 // Use set with the document ID as the user's UID
                 db.collection("assessment").document(uid).set(assessmentData)
                     .addOnSuccessListener {
-                        Toast.makeText(this@AssessmentActivity, "You've successfully apply for Skills Assessment, We'll contact you soon!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AssessmentActivity, "You've successfully applied for Skills Assessment. We'll contact you soon!", Toast.LENGTH_SHORT).show()
                         setResult(RESULT_OK)
                         finish()
                     }
@@ -137,6 +149,7 @@ class AssessmentActivity : AppCompatActivity() {
             Toast.makeText(this@AssessmentActivity, "User not logged in", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     // Method to fetch profile descriptions from Firestore
     private fun fetchProfileDescriptions(uid: String, callback: (String?, String?, String?, String?, String?, String?) -> Unit) {
