@@ -46,9 +46,12 @@ class ChatPersonActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_chat_person)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById<View>(R.id.main)) { v, insets ->
-            val systemBars: Insets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
+        // Apply window insets to avoid keyboard overlay
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
+            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+            val systemBarInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            view.setPadding(systemBarInsets.left, systemBarInsets.top, systemBarInsets.right, imeInsets.bottom)
             insets
         }
 

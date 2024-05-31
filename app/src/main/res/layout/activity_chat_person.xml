@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundcolor"
-    android:orientation="vertical">
+    tools:context=".ChatPersonActivity">
 
     <!-- Header layout with back arrow, profile image, and name -->
     <LinearLayout
         android:id="@+id/chat_layout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="60dp"
+        android:orientation="horizontal"
         android:padding="6dp"
         android:background="@color/primarycolor"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
             android:id="@+id/backbutton"
@@ -25,16 +30,16 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:padding="5dp"
-            android:src="@drawable/woodableslogo"
-            android:layout_weight="1" />
+            android:src="@drawable/woodableslogo" />
 
         <TextView
             android:id="@+id/receiverUser"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:layout_weight="3"
+            android:gravity="center"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/textcolor" />
@@ -45,43 +50,50 @@
             android:layout_weight="0.50"
             android:padding="5dp"
             android:src="@drawable/calliconblack" />
-
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#D9D9D9"
-        android:layout_marginTop="2dp" />
+        android:layout_marginTop="2dp"
+        app:layout_constraintTop_toBottomOf="@+id/chat_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Scroll view for chat messages -->
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/chat_layout"
+        app:layout_constraintBottom_toTopOf="@id/messagearea"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:id="@+id/messageContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom"
+            android:orientation="vertical"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:orientation="vertical">
-
+            android:paddingBottom="10dp">
         </LinearLayout>
     </ScrollView>
 
     <!-- Input area for new messages -->
     <LinearLayout
         android:id="@+id/messagearea"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@color/primarycolor"
         android:layout_marginBottom="25dp"
-        android:background="@color/primarycolor">
-
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <EditText
             android:id="@+id/message_input"
@@ -106,4 +118,4 @@
             android:padding="10dp" />
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
