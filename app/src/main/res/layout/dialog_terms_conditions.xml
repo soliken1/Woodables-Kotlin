@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/dialog_terms_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Terms and Conditions"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/dialog_terms_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please read and accept the terms and conditions to proceed with the enrollment."
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/course_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to our woodworking course! Here's an overview of how the course is structured and what you can expect:"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/course_structure_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Course Structure:"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/course_structure_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" - Introduction and Safety: Learn about the basic safety protocols and get familiar with the woodworking tools and equipment.\n - Basic Techniques: Master fundamental woodworking techniques such as measuring, cutting, and joining wood.\n - Project Planning: Understand how to plan and design your woodworking projects, including material selection and blueprint reading.\n - Hands-on Projects: Apply what you've learned by working on practical projects, ranging from simple items like birdhouses to more complex furniture pieces.\n - Advanced Techniques: Explore advanced woodworking skills like wood carving, turning, and intricate joinery."
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/learning_materials_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Learning Materials:"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/learning_materials_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Each module includes a variety of learning materials, such as:\n - Video Demonstrations: Watch step-by-step video tutorials on various woodworking techniques and projects.\n - Written Guides: Access detailed written guides and manuals to supplement the video content.\n - Interactive Quizzes: Test your understanding with quizzes that provide instant feedback.\n - Community Forums: Join discussions with peers and instructors to share tips, ask questions, and showcase your work."
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/assessments_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Assessments and Grading:"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/assessments_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="To ensure you grasp the material, we have various assessments throughout the course:\n - Quizzes: Short quizzes at the end of each module to check your knowledge.\n - Practical Assignments: Complete hands-on assignments that require applying what you've learned.\n - Peer Reviews: Review and provide feedback on your peers' projects, and receive feedback on your own.\n - Final Project: A comprehensive woodworking project that showcases your skills and creativity."
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/support_resources_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Support and Resources:"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/support_resources_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="We offer several resources to help you succeed:\n - Instructor Office Hours: Schedule one-on-one time with instructors to ask questions and get personalized guidance.\n - Study Groups: Join study groups with fellow students to collaborate and learn together.\n - Technical Support: Access our support team for any technical issues you encounter with the platform."
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/certificate_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Certificate of Completion:"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/certificate_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upon successfully completing the course, you will receive a certificate of completion that you can share with employers and add to your resume or profile."
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/closing_remarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="We hope you enjoy the course and find it both challenging and rewarding. Happy woodworking!"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/button_accept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Accept"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/button_decline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Decline"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+</ScrollView>
