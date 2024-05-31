@@ -12,12 +12,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QueryDocumentSnapshot
 
 class CourseCatalogFragment : Fragment() {
 
@@ -73,7 +69,7 @@ class CourseCatalogFragment : Fragment() {
                         }
                     }
                 } else {
-                    // Handle the error
+                    Toast.makeText(context, "Failed to load courses.", Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -115,32 +111,72 @@ class CourseCatalogFragment : Fragment() {
         buttonCancel.setOnClickListener { dialog.dismiss() }
 
         buttonEnroll.setOnClickListener {
-            val currentUser = FirebaseAuth.getInstance().currentUser
-            if (currentUser != null) {
-                val userId = currentUser.uid
-
-                val courseData = hashMapOf(
-                    "title" to title,
-                    "description" to description,
-                    "details" to details,
-                    "link" to link
-                )
-
-                db.collection("enrolled_courses").document(userId)
-                    .collection("courses")
-                    .add(courseData)
-                    .addOnSuccessListener {
-                        Toast.makeText(context, "Enrolled successfully!", Toast.LENGTH_SHORT).show()
-                        dialog.dismiss()
-                    }
-                    .addOnFailureListener {
-                        Toast.makeText(context, "Failed to enroll. Please try again.", Toast.LENGTH_SHORT).show()
-                    }
-            } else {
-                Toast.makeText(context, "User not authenticated. Please log in.", Toast.LENGTH_SHORT).show()
-            }
+            showTermsAndConditionsDialog(title, description, details, link, dialog)
         }
 
         dialog.show()
+    }
+
+    private fun showTermsAndConditionsDialog(title: String?, description: String?, details: String?, link: String?, parentDialog: AlertDialog) {
+        val builder = AlertDialog.Builder(context)
+        val inflater = layoutInflater
+        val termsView = inflater.inflate(R.layout.dialog_terms_conditions, null)
+        builder.setView(termsView)
+
+        val buttonAccept = termsView.findViewById<Button>(R.id.button_accept)
+        val buttonDecline = termsView.findViewById<Button>(R.id.button_decline)
+
+        val termsDialog = builder.create()
+
+        buttonAccept.setOnClickListener {
+            enrollInCourse(title, description, details, link)
+            termsDialog.dismiss()
+            parentDialog.dismiss()
+        }
+
+        buttonDecline.setOnClickListener {
+            termsDialog.dismiss()
+        }
+
+        termsDialog.show()
+    }
+
+    private fun enrollInCourse(title: String?, description: String?, details: String?, link: String?) {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            val userId = currentUser.uid
+
+            db.collection("enrolled_courses").document(userId)
+                .collection("courses")
+                .whereEqualTo("title", title)
+                .get()
+                .addOnSuccessListener { documents ->
+                    if (documents.isEmpty) {
+                        val courseData = hashMapOf(
+                            "title" to title,
+                            "description" to description,
+                            "details" to details,
+                            "link" to link
+                        )
+
+                        db.collection("enrolled_courses").document(userId)
+                            .collection("courses")
+                            .add(courseData)
+                            .addOnSuccessListener {
+                                Toast.makeText(context, "Course enrolled successfully!", Toast.LENGTH_SHORT).show()
+                            }
+                            .addOnFailureListener {
+                                Toast.makeText(context, "Failed to enroll. Please try again.", Toast.LENGTH_SHORT).show()
+                            }
+                    } else {
+                        Toast.makeText(context, "You are already enrolled in this course.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(context, "Failed to check enrollment status. Please try again.", Toast.LENGTH_SHORT).show()
+                }
+        } else {
+            Toast.makeText(context, "User not authenticated. Please log in.", Toast.LENGTH_SHORT).show()
+        }
     }
 }
