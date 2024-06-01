@@ -43,37 +43,7 @@
                 android:textColor="@color/textcolor"
                 android:textSize="20sp" />
 
-            <ImageView
-                android:id="@+id/toSearch"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:layout_weight="0.50"
-                android:src="@drawable/search"
-                android:contentDescription="@string/search"/>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/searchbargroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/backgroundcolor"
-            android:orientation="horizontal">
-
-            <SearchView
-                android:id="@+id/searchBarProfile"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_weight="3"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/textbox_4curvedcorners"
-                android:backgroundTint="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:theme="@style/SearchViewTextStyle"
-                />
         </LinearLayout>
 
         <ScrollView
