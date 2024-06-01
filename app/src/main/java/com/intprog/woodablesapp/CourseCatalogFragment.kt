@@ -14,6 +14,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import android.widget.SearchView
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
 
 class CourseCatalogFragment : Fragment() {
 
@@ -21,6 +24,8 @@ class CourseCatalogFragment : Fragment() {
     private lateinit var backBtn: ImageView
     private lateinit var db: FirebaseFirestore
     private lateinit var courseListContainer: LinearLayout
+    private lateinit var searchBar: SearchView
+    private var allCourses: List<DocumentSnapshot> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +37,7 @@ class CourseCatalogFragment : Fragment() {
         db = FirebaseFirestore.getInstance()
         toSkillAssess = viewRoot.findViewById(R.id.skillassess)
         backBtn = viewRoot.findViewById(R.id.backbutton)
+        searchBar = viewRoot.findViewById(R.id.searchBarProfile)
 
         toSkillAssess.setOnClickListener {
             val toAssessment = Intent(viewRoot.context, AssessmentActivity::class.java)
@@ -49,6 +55,17 @@ class CourseCatalogFragment : Fragment() {
             }
         }
 
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterCourses(newText)
+                return true
+            }
+        })
+
         loadCourses()
         return viewRoot
     }
@@ -60,14 +77,10 @@ class CourseCatalogFragment : Fragment() {
                 if (task.isSuccessful) {
                     val querySnapshot = task.result
                     if (querySnapshot != null) {
-                        for (document in querySnapshot) {
-                            val title = document.getString("title")
-                            val description = document.getString("description")
-                            val details = document.getString("details")
-                            val link = document.getString("link")
-                            addCourseToUI(title, description, details, link)
-                        }
+                        allCourses = querySnapshot.documents
+                        displayCourses(allCourses)
                     }
+
                 } else {
                     Toast.makeText(context, "Failed to load courses.", Toast.LENGTH_SHORT).show()
                 }
@@ -178,5 +191,30 @@ class CourseCatalogFragment : Fragment() {
         } else {
             Toast.makeText(context, "User not authenticated. Please log in.", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun displayCourses(courses: List<DocumentSnapshot>) {
+        courseListContainer.removeAllViews()
+        for (document in courses) {
+            val title = document.getString("title")
+            val description = document.getString("description")
+            val details = document.getString("details")
+            val link = document.getString("link")
+            addCourseToUI(title, description, details, link)
+        }
+    }
+
+    private fun filterCourses(query: String?) {
+        val filteredCourses = if (query.isNullOrEmpty()) {
+            allCourses
+        } else {
+            allCourses.filter { document ->
+                val title = document.getString("title")?.contains(query, true) ?: false
+                val description = document.getString("description")?.contains(query, true) ?: false
+                val details = document.getString("details")?.contains(query, true) ?: false
+                title || description || details
+            }
+        }
+        displayCourses(filteredCourses)
     }
 }
