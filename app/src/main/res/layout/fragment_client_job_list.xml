@@ -9,12 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/white">
+        >
 
         <LinearLayout
             android:id="@+id/searchbargroup"
             android:layout_width="match_parent"
-            android:background="@color/cinnamon"
+            android:background="@color/primarycolor"
             android:layout_height="55dp"
             android:orientation="horizontal">
 
@@ -26,7 +26,6 @@
                 android:layout_weight="0.45"
                 android:clickable="true"
                 android:focusable="true"
-                android:background="@color/cinnamon"
                 android:src="@drawable/leftarrow" />
 
             <SearchView
