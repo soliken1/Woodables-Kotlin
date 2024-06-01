@@ -4,12 +4,13 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:padding="16dp"
-    android:background="#FFFFFF"
+    android:background="@color/secondarycolor"
     android:radius="15dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/secondarycolor"
         android:padding="10dp"
         android:orientation="vertical">
 

@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/transpa"
+    android:background="@color/backgroundcolor"
     tools:context=".AdminMainScreen">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/cinnamon">
+        android:background="@color/primarycolor">
 
         <ImageView
             android:layout_width="0dp"
@@ -62,6 +62,7 @@
             android:id="@+id/toListings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/primarycolor"
             android:text="Listings" />
 
         <Button
@@ -70,12 +71,14 @@
             android:layout_height="wrap_content"
             android:text="Assessment"
             android:layout_marginStart="10dp"
+            android:backgroundTint="@color/primarycolor"
             android:layout_marginEnd="10dp" />
 
         <Button
             android:id="@+id/toPosts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/primarycolor"
             android:text="Posts" />
     </LinearLayout>
 

@@ -54,46 +54,27 @@
 
         </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/searchbargroup"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/secondarycolor"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundcolor"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/rounded_corners"
-                android:fontFamily="@font/spartan_medium"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="@string/all"
-                android:textColor="#000000" />
-
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/spartan_medium"
-                android:gravity="center"
-                android:text="@string/direct"
-                android:textColor="@color/textcolor" />
-
-            <TextView
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/spartan_medium"
-                android:gravity="center"
-                android:text="@string/project_discussion"
-                android:textColor="@color/textcolor"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="20dp"/>
-
-        </RelativeLayout>
+            <SearchView
+                android:id="@+id/searchBarProfile"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="3"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/textbox_4curvedcorners"
+                android:backgroundTint="@color/white"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:theme="@style/SearchViewTextStyle"
+                />
+        </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
