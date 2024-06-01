@@ -10,12 +10,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
 class LearnCourseFragment : Fragment() {
@@ -25,7 +25,9 @@ class LearnCourseFragment : Fragment() {
     private lateinit var toCatalog: Button
     private lateinit var refreshButton: Button
     private lateinit var enrolledCoursesContainer: LinearLayout
+    private lateinit var searchBar: SearchView
     private lateinit var db: FirebaseFirestore
+    private var allEnrolledCourses: List<DocumentSnapshot> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +39,7 @@ class LearnCourseFragment : Fragment() {
         toCatalog = viewRoot.findViewById(R.id.browsecoursecatalog)
         refreshButton = viewRoot.findViewById(R.id.refreshbutton)
         enrolledCoursesContainer = viewRoot.findViewById(R.id.enrolled_courses_container)
+        searchBar = viewRoot.findViewById(R.id.searchBarProfile)
         db = FirebaseFirestore.getInstance()
 
         toCatalog.setOnClickListener {
@@ -57,6 +60,17 @@ class LearnCourseFragment : Fragment() {
         refreshButton.setOnClickListener {
             refreshFragment()
         }
+
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterEnrolledCourses(newText)
+                return true
+            }
+        })
 
         loadEnrolledCourses()
 
@@ -82,14 +96,8 @@ class LearnCourseFragment : Fragment() {
                     if (task.isSuccessful) {
                         val querySnapshot = task.result
                         if (querySnapshot != null) {
-                            enrolledCoursesContainer.removeAllViews() // Clear existing views
-                            for (document in querySnapshot) {
-                                val title = document.getString("title")
-                                val description = document.getString("description")
-                                val details = document.getString("details")
-                                val link = document.getString("link")
-                                addEnrolledCourseToUI(title, description, details, link)
-                            }
+                            allEnrolledCourses = querySnapshot.documents
+                            displayEnrolledCourses(allEnrolledCourses)
                         }
                     } else {
                         Toast.makeText(context, "Failed to load courses.", Toast.LENGTH_SHORT).show()
@@ -97,6 +105,17 @@ class LearnCourseFragment : Fragment() {
                 }
         } else {
             Toast.makeText(context, "User not authenticated. Please log in.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun displayEnrolledCourses(courses: List<DocumentSnapshot>) {
+        enrolledCoursesContainer.removeAllViews() // Clear existing views
+        for (document in courses) {
+            val title = document.getString("title")
+            val description = document.getString("description")
+            val details = document.getString("details")
+            val link = document.getString("link")
+            addEnrolledCourseToUI(title, description, details, link)
         }
     }
 
@@ -189,6 +208,20 @@ class LearnCourseFragment : Fragment() {
                     }
                 }
         }
+    }
+
+    private fun filterEnrolledCourses(query: String?) {
+        val filteredCourses = if (query.isNullOrEmpty()) {
+            allEnrolledCourses
+        } else {
+            allEnrolledCourses.filter { document ->
+                val title = document.getString("title")?.contains(query, true) ?: false
+                val description = document.getString("description")?.contains(query, true) ?: false
+                val details = document.getString("details")?.contains(query, true) ?: false
+                title || description || details
+            }
+        }
+        displayEnrolledCourses(filteredCourses)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
