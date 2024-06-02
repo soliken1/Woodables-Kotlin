@@ -12,6 +12,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import android.content.SharedPreferences
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -26,6 +28,7 @@ class PostDetailFragment : Fragment() {
     private lateinit var commentContainer: LinearLayout
     private lateinit var db: FirebaseFirestore
     private lateinit var currentUser: String
+    private var keyboardVisible = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -75,6 +78,30 @@ class PostDetailFragment : Fragment() {
 
         // Listen for changes in comments
         listenForComments()
+        // Adjust layout based on keyboard visibility
+        // Adjust layout based on keyboard visibility
+        val mainView = view.findViewById<View>(R.id.main)
+        val messageArea = view.findViewById<LinearLayout>(R.id.messagearea)
+
+        ViewCompat.setOnApplyWindowInsetsListener(mainView) { _, insets ->
+            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+            if (imeInsets.bottom > 0) {
+                // Keyboard is open
+                keyboardVisible = true
+                adjustMessageAreaPadding(messageArea, imeInsets.bottom)
+            } else {
+                // Keyboard is closed
+                if (keyboardVisible) {
+                    keyboardVisible = false
+                    adjustMessageAreaPadding(messageArea, 0)
+                }
+            }
+            insets
+        }
+    }
+
+    private fun adjustMessageAreaPadding(messageArea: LinearLayout, bottomPadding: Int) {
+        messageArea.setPadding(0, 0, 0, bottomPadding)
     }
 
     private fun saveComment(commentText: String) {

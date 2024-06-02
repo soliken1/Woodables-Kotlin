@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!-- fragment_post_detail.xml -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:background="@color/backgroundcolor"
@@ -45,8 +45,6 @@
                 android:text="Post"
                 android:textColor="@color/textcolor"
                 android:textSize="20sp" />
-
-
         </LinearLayout>
 
         <RelativeLayout
@@ -109,7 +107,6 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="4dp"
                 android:textColor="@color/black"/>
-
         </RelativeLayout>
 
         <TextView
@@ -133,7 +130,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 tools:ignore="TextSizeCheck">
-
             </LinearLayout>
         </ScrollView>
 
@@ -167,4 +163,4 @@
                 android:padding="10dp" />
         </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
