@@ -132,7 +132,7 @@
                             android:textColor="@color/textcolor"
                             android:textColorHint="@color/textcolor"
                             android:textSize="16sp"
-                            android:hint="1000 ~ 99999"
+                            android:hint="500 ~ 99999"
                             android:background="@drawable/input_border"/>
 
                         <CheckBox

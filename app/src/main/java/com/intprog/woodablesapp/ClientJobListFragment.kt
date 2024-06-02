@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -22,6 +23,8 @@ class ClientJobListFragment : Fragment() {
     private lateinit var db: FirebaseFirestore
     private lateinit var mAuth: FirebaseAuth
     private lateinit var userId: String
+    private lateinit var searchView: SearchView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,12 +34,13 @@ class ClientJobListFragment : Fragment() {
 
         joblistingsLinearLayout = viewRoot.findViewById(R.id.joblistingsLinearLayout)
         val bkbutton: ImageView = viewRoot.findViewById(R.id.backbutton)
+        searchView = viewRoot.findViewById(R.id.searchBarProfile)
 
         db = FirebaseFirestore.getInstance()
         mAuth = FirebaseAuth.getInstance()
         userId = mAuth.currentUser?.uid.orEmpty()
 
-        loadUserJobList()
+        loadUserJobList("")
 
         bkbutton.setOnClickListener {
             val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
@@ -47,10 +51,23 @@ class ClientJobListFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                loadUserJobList(query.orEmpty())
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                loadUserJobList(newText.orEmpty())
+                return true
+            }
+        })
+
         return viewRoot
     }
 
-    private fun loadUserJobList() {
+    private fun loadUserJobList(searchQuery: String) {
         db.collection("job_listings")
             .document(userId)
             .collection("user_jobs")
@@ -62,7 +79,9 @@ class ClientJobListFragment : Fragment() {
                     joblistingsLinearLayout.removeAllViews()
                     for (document in task.result!!) {
                         val listing = document.toObject(Listing::class.java)
-                        addListingToLayout(document.id, listing)
+                        if (listingMatchesSearchQuery(listing, searchQuery)) {
+                            addListingToLayout(document.id, listing)
+                        }
                     }
                 } else {
                     Toast.makeText(
@@ -72,6 +91,16 @@ class ClientJobListFragment : Fragment() {
                     ).show()
                 }
             }
+    }
+
+    private fun listingMatchesSearchQuery(listing: Listing, searchQuery: String): Boolean {
+        return listing.companyName?.contains(searchQuery, ignoreCase = true) ?: false ||
+                listing.jobTitle?.contains(searchQuery, ignoreCase = true) ?: false ||
+                listing.details?.contains(searchQuery, ignoreCase = true) ?: false ||
+                listing.payRange?.contains(searchQuery, ignoreCase = true) ?: false ||
+                listing.requirements1?.contains(searchQuery, ignoreCase = true) ?: false ||
+                listing.requirements2?.contains(searchQuery, ignoreCase = true) ?: false ||
+                listing.requirements3?.contains(searchQuery, ignoreCase = true) ?: false
     }
 
     private fun addListingToLayout(documentId: String, listing: Listing) {
@@ -112,7 +141,7 @@ class ClientJobListFragment : Fragment() {
             .delete()
             .addOnSuccessListener {
                 Toast.makeText(context, "Job listing deleted", Toast.LENGTH_SHORT).show()
-                loadUserJobList()
+                loadUserJobList("")
             }
             .addOnFailureListener { e ->
                 Toast.makeText(context, "Error deleting job listing: ${e.message}", Toast.LENGTH_SHORT).show()
