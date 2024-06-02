@@ -15,7 +15,11 @@ class CommunityFragment : Fragment() {
 
     private lateinit var addPost: ImageView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val viewRoot = inflater.inflate(R.layout.fragment_community, container, false)
 
         addPost = viewRoot.findViewById(R.id.addpost)
@@ -38,8 +42,9 @@ class CommunityFragment : Fragment() {
             .get()
             .addOnSuccessListener { queryDocumentSnapshots ->
                 for (documentSnapshot in queryDocumentSnapshots) {
+                    val postId = documentSnapshot.id // Retrieve the document ID
                     val post = documentSnapshot.toObject(Post::class.java)
-                    renderPost(post)
+                    renderPost(postId, post) // Pass the document ID to renderPost method
                 }
             }
             .addOnFailureListener {
@@ -47,7 +52,7 @@ class CommunityFragment : Fragment() {
             }
     }
 
-    private fun renderPost(post: Post) {
+    private fun renderPost(postId: String, post: Post) {
         // Inflate your post layout dynamically
         val inflater = LayoutInflater.from(context)
         val postView = inflater.inflate(R.layout.post_item, null)
@@ -60,6 +65,17 @@ class CommunityFragment : Fragment() {
         titleTextView.text = post.title
         messageTextView.text = post.message
         userNameTextView.text = post.userName
+
+        // Set OnClickListener to redirect to the post detail activity
+        postView.setOnClickListener {
+            // Start PostDetailActivity and pass the post ID
+            val intent = Intent(context, PostDetailActivity::class.java)
+            intent.putExtra("postId", postId)
+            intent.putExtra("postTitle", post.title)
+            intent.putExtra("postMessage", post.message)
+            intent.putExtra("postUser", post.userName)
+            startActivity(intent)
+        }
 
         // Add the post view to your ScrollView
         val postContainer: LinearLayout? = view?.findViewById(R.id.postContainer)

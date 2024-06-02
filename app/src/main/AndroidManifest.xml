@@ -22,6 +22,9 @@
         android:theme="@style/Theme.WoodablesApp"
         tools:targetApi="31">
         <activity
+            android:name=".PostDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminMainScreen"
             android:exported="false" />
         <activity
@@ -30,7 +33,7 @@
         <activity
             android:name=".ChatPersonActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".UserInfoActivity"
             android:exported="false" />
