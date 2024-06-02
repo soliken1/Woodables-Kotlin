@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
@@ -97,11 +99,53 @@ class MainScreenActivity : AppCompatActivity() {
     }
 
     private fun replaceFragment(frag: Fragment) {
-        supportFragmentManager.beginTransaction().apply {
+        val fragmentManager = supportFragmentManager
+
+        fragmentManager.beginTransaction().apply {
             setCustomAnimations(R.anim.slide_out_right, R.anim.slide_in_left)
+
             replace(R.id.contentView, frag)
+
+            addToBackStack(null)
             commit()
         }
+    }
+
+    // Override onBackPressed() in your activity
+    override fun onBackPressed() {
+        val fragmentManager = supportFragmentManager
+        val backStackEntryCount = fragmentManager.backStackEntryCount
+
+        Toast.makeText(applicationContext, backStackEntryCount.toString(), Toast.LENGTH_SHORT).show()
+
+        if (backStackEntryCount == 1){
+            fragmentManager.beginTransaction().apply {
+                setCustomAnimations(R.anim.slide_out_right, R.anim.slide_in_left)
+                replace(R.id.contentView, CommunityFragment())
+                fragmentManager.popBackStackImmediate()
+                commit()
+            }
+            }else{
+            if (backStackEntryCount == 0) {
+                val confirmationDialog = AlertDialog.Builder(this)
+                    .setTitle("App Close Confirmation")
+                    .setMessage("Minimize App?") // Replace with your string resource
+                    .setPositiveButton("Continue") { dialog, _ ->
+                        moveTaskToBack(true)
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton("Cancel") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create()
+                confirmationDialog.show()
+            } else {
+                super.onBackPressed()
+            }
+        }
+
+
+
     }
 
     private fun enableAllBtn() {
@@ -109,8 +153,4 @@ class MainScreenActivity : AppCompatActivity() {
         nav.forEach { it.isEnabled = true }
     }
 
-//    override fun onBackPressed() {
-//
-//
-//    }
 }

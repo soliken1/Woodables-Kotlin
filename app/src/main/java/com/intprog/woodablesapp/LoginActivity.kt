@@ -72,6 +72,8 @@ class LoginActivity : AppCompatActivity() {
                                         if ("admin" == role) {
                                             val adminActivityIntent = Intent(this@LoginActivity, AdminMainScreen::class.java)
                                             startActivity(adminActivityIntent)
+
+                                            finish()
                                         } else {
                                             val toUserProfile = Intent(this@LoginActivity, MainScreenActivity::class.java)
                                             val fullName = "$firstname $middlename $lastname"
@@ -86,7 +88,6 @@ class LoginActivity : AppCompatActivity() {
 
                                             finish()
                                         }
-
                                         Toast.makeText(this@LoginActivity, "Login successful", Toast.LENGTH_LONG).show()
                                     } else {
                                         Log.d("LoginActivity", "User document does not exist")
