@@ -56,20 +56,10 @@
         android:layout_marginLeft="10dp"
         android:textStyle="bold"
         android:textColorHint="@color/white"
-        android:fontFamily="@font/spartan_medium" />
-    <EditText
-        android:id="@+id/contenttxt2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/contenttxt"
-        android:inputType="text"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/white"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold"
-        android:textColorHint="@color/white"
-        android:fontFamily="@font/spartan_medium" />
+        android:fontFamily="@font/spartan_medium"
+        android:maxLines="8"
+        android:maxLength="1000" />
+
 
     <Button
         android:id="@+id/postbtn"

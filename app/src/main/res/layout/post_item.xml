@@ -22,7 +22,7 @@
         android:clipToOutline="true"
         android:contentDescription="@string/logo"
         android:cropToPadding="true"
-        android:src="@drawable/catprofile"
+        android:src="@drawable/default_profile"
         android:scaleType="centerCrop"/>
 
     <TextView
