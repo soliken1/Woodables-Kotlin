@@ -3,6 +3,7 @@
 
     <!-- Style for SearchView text -->
     <style name="SearchViewTextStyle" parent="Widget.AppCompat.SearchView">
-        <item name="android:textColor">#1E1E1E</item>
+        <item name="android:editTextColor">@color/textcolor</item>
+        <item name="android:textColorHint">@color/textcolor</item>
     </style>
 </resources>

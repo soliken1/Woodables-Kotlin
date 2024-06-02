@@ -14,7 +14,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/white"/>
+            android:background="@color/accentcolor"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -135,9 +135,12 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/textbox_4curvedcorners"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/primarycolor"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
+                android:autofillHints="Search Enrolled Courses.."
+                android:textAlignment="textStart"
+                android:queryHint="Search Enrolled Courses..."
                 android:theme="@style/SearchViewTextStyle"
                 />
 
