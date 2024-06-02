@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -47,7 +48,63 @@ class JobListingFragment : Fragment() {
         fetchProfilePicture(profilePicture)
         retrieveUserFullName() // Fetch the user's full name
         retrieveListings()
+
+        val searchView = rootView.findViewById<SearchView>(R.id.searchBarProfile)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    searchListings(query)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    searchListings(newText)
+                }
+                return true
+            }
+        })
+
         return rootView
+    }
+
+    private fun searchListings(query: String) {
+        db!!.collectionGroup("user_jobs")
+            .whereEqualTo("status", "approved")
+            .orderBy("jobTitle", Query.Direction.ASCENDING)
+            .get()
+            .addOnSuccessListener { queryDocumentSnapshots: QuerySnapshot ->
+                val listingContainer = view?.findViewById<LinearLayout>(R.id.listingContainer)
+                listingContainer?.removeAllViews() // Clear previous results
+
+                if (queryDocumentSnapshots.isEmpty) {
+                    Toast.makeText(context, "No approved listings found.", Toast.LENGTH_SHORT).show()
+                } else {
+                    for (documentSnapshot in queryDocumentSnapshots) {
+                        val listing = documentSnapshot.toObject(Listing::class.java)
+                        if (listing.matchesQuery(query)) {
+                            val ownerEmail = documentSnapshot.getString("creatorEmail")
+                            renderListing(listing, ownerEmail)
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener { e: Exception ->
+                Log.e("JobListingFragment", "Failed to retrieve listings", e)
+                Toast.makeText(context, "Failed to retrieve listings: " + e.message, Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    // Add a method in the Listing class to check if the listing matches the query
+    private fun Listing.matchesQuery(query: String): Boolean {
+        return companyName?.contains(query, ignoreCase = true) == true ||
+                jobTitle?.contains(query, ignoreCase = true) == true ||
+                payRange?.contains(query, ignoreCase = true) == true ||
+                details?.contains(query, ignoreCase = true) == true ||
+                requirements1?.contains(query, ignoreCase = true) == true ||
+                requirements2?.contains(query, ignoreCase = true) == true ||
+                requirements3?.contains(query, ignoreCase = true) == true
     }
 
     private fun fetchProfilePicture(profilePicture: ImageView) {
@@ -206,4 +263,6 @@ class JobListingFragment : Fragment() {
                 ).show()
             }
     }
+
+
 }
