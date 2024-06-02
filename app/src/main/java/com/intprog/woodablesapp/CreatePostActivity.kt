@@ -92,6 +92,7 @@ class CreatePostActivity : AppCompatActivity() {
                 Log.d("Firestore", "Post added successfully with ID: ${documentReference.id}")
                 // Show a toast indicating successful posting
                 Toast.makeText(this, "Please Wait For Admin Approval On Your Post", Toast.LENGTH_SHORT).show()
+                finish()
             }
             .addOnFailureListener { e ->
                 // Handle failure
