@@ -66,15 +66,19 @@ class CommunityFragment : Fragment() {
         messageTextView.text = post.message
         userNameTextView.text = post.userName
 
-        // Set OnClickListener to redirect to the post detail activity
+        // Set OnClickListener to redirect to the post detail fragment
         postView.setOnClickListener {
-            // Start PostDetailActivity and pass the post ID
-            val intent = Intent(context, PostDetailActivity::class.java)
-            intent.putExtra("postId", postId)
-            intent.putExtra("postTitle", post.title)
-            intent.putExtra("postMessage", post.message)
-            intent.putExtra("postUser", post.userName)
-            startActivity(intent)
+            // Start PostDetailFragment and pass the post details as arguments
+            val fragment = PostDetailFragment().apply {
+                arguments = Bundle().apply {
+                    putString("postId", postId)
+                    putString("postTitle", post.title)
+                    putString("postMessage", post.message)
+                    putString("postUser", post.userName)
+                }
+            }
+            // Replace the current fragment with PostDetailFragment
+            fragmentManager?.beginTransaction()?.replace(R.id.fragment_container, fragment)?.commit()
         }
 
         // Add the post view to your ScrollView
@@ -87,4 +91,5 @@ class CommunityFragment : Fragment() {
         postView.layoutParams = layoutParams
         postContainer?.addView(postView)
     }
+
 }
