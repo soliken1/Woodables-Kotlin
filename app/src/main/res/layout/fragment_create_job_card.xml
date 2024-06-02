@@ -32,7 +32,7 @@
                 android:layout_weight="3"
                 android:text="Create Job Card"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="@color/textcolor"
                 android:textStyle="bold"
                 android:textSize="25sp" />
 
@@ -41,7 +41,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/white"/>
+            android:background="@color/accentcolor"/>
 
         <ScrollView
             android:layout_width="match_parent"

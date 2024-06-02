@@ -97,6 +97,7 @@
                 android:layout_width="250dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
+                android:textColor="@color/white"
                 android:backgroundTint="@color/cinnamon"
                 android:text="@string/login"/>
         </LinearLayout>
