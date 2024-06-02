@@ -26,7 +26,7 @@
         android:layout_marginTop="10dp"
         android:layout_height="50dp"
         android:layout_below="@id/close"
-        android:src="@drawable/tzuyuu"
+        android:src="@drawable/default_profile"
         android:background="@drawable/rounded_img"/>
 
     <EditText
