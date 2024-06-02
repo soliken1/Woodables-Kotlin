@@ -1,19 +1,15 @@
 package com.intprog.woodablesapp
 
-import android.content.Intent
+
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 
 class MainScreenActivity : AppCompatActivity() {
 
@@ -111,12 +107,9 @@ class MainScreenActivity : AppCompatActivity() {
         }
     }
 
-    // Override onBackPressed() in your activity
     override fun onBackPressed() {
         val fragmentManager = supportFragmentManager
         val backStackEntryCount = fragmentManager.backStackEntryCount
-
-        Toast.makeText(applicationContext, backStackEntryCount.toString(), Toast.LENGTH_SHORT).show()
 
         if (backStackEntryCount == 1){
             fragmentManager.beginTransaction().apply {
@@ -129,7 +122,7 @@ class MainScreenActivity : AppCompatActivity() {
             if (backStackEntryCount == 0) {
                 val confirmationDialog = AlertDialog.Builder(this)
                     .setTitle("App Close Confirmation")
-                    .setMessage("Minimize App?") // Replace with your string resource
+                    .setMessage("Minimize App?")
                     .setPositiveButton("Continue") { dialog, _ ->
                         moveTaskToBack(true)
                         dialog.dismiss()
@@ -143,9 +136,6 @@ class MainScreenActivity : AppCompatActivity() {
                 super.onBackPressed()
             }
         }
-
-
-
     }
 
     private fun enableAllBtn() {
