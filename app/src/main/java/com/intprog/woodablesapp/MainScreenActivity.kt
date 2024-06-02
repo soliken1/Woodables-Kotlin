@@ -108,4 +108,9 @@ class MainScreenActivity : AppCompatActivity() {
         val nav = arrayOf(homeclick, communityclick, postingclick, chatclick, docclick)
         nav.forEach { it.isEnabled = true }
     }
+
+//    override fun onBackPressed() {
+//
+//
+//    }
 }

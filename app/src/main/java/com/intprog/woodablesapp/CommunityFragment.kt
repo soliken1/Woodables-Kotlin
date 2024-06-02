@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,6 +15,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 class CommunityFragment : Fragment() {
 
     private lateinit var addPost: ImageView
+    private lateinit var searchView: SearchView
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,6 +27,7 @@ class CommunityFragment : Fragment() {
         val viewRoot = inflater.inflate(R.layout.fragment_community, container, false)
 
         addPost = viewRoot.findViewById(R.id.addpost)
+        searchView = viewRoot.findViewById(R.id.searchBarProfile)
 
         addPost.setOnClickListener {
             val toPost = Intent(viewRoot.context, CreatePostActivity::class.java)
@@ -30,6 +35,22 @@ class CommunityFragment : Fragment() {
         }
 
         retrievePosts()
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    searchPosts(query)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    searchPosts(newText)
+                }
+                return true
+            }
+        })
 
         return viewRoot
     }
@@ -45,6 +66,32 @@ class CommunityFragment : Fragment() {
                     val postId = documentSnapshot.id // Retrieve the document ID
                     val post = documentSnapshot.toObject(Post::class.java)
                     renderPost(postId, post) // Pass the document ID to renderPost method
+                }
+            }
+            .addOnFailureListener {
+                // Handle failure
+            }
+    }
+
+    private fun searchPosts(query: String) {
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection("posts")
+            .whereNotEqualTo("status", "pending")
+            .get()
+            .addOnSuccessListener { queryDocumentSnapshots ->
+                val filteredPosts = queryDocumentSnapshots.filter { documentSnapshot ->
+                    val post = documentSnapshot.toObject(Post::class.java)
+                    post.title?.contains(query, ignoreCase = true) == true ||
+                            post.message?.contains(query, ignoreCase = true) == true ||
+                            post.userName?.contains(query, ignoreCase = true) == true
+                }
+                val postContainer: LinearLayout? = view?.findViewById(R.id.postContainer)
+                postContainer?.removeAllViews()
+                for (documentSnapshot in filteredPosts) {
+                    val postId = documentSnapshot.id
+                    val post = documentSnapshot.toObject(Post::class.java)
+                    renderPost(postId, post)
                 }
             }
             .addOnFailureListener {

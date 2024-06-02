@@ -83,6 +83,8 @@ class LoginActivity : AppCompatActivity() {
                                             editor.putString("role", role)
                                             editor.apply()
                                             startActivity(toUserProfile)
+
+                                            finish()
                                         }
 
                                         Toast.makeText(this@LoginActivity, "Login successful", Toast.LENGTH_LONG).show()

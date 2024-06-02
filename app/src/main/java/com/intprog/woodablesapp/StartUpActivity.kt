@@ -24,12 +24,14 @@ class StartUpActivity : AppCompatActivity() {
             val navreg = Intent(this@StartUpActivity, UserInfoActivity::class.java)
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
             startActivity(navreg)
+
         }
 
         loginbtn.setOnClickListener {
             val navlogin = Intent(this@StartUpActivity, LoginActivity::class.java)
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
             startActivity(navlogin)
+
         }
     }
 }
