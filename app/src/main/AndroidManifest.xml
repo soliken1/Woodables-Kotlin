@@ -30,7 +30,7 @@
         <activity
             android:name=".ChatPersonActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".UserInfoActivity"
             android:exported="false" />
