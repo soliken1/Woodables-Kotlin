@@ -28,9 +28,6 @@ class CreatePostActivity : AppCompatActivity() {
     private lateinit var content: EditText
     private lateinit var clickPost: Button
     private lateinit var closeview: ImageView
-    private lateinit var toCam: ImageView
-    private lateinit var toGal: ImageView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

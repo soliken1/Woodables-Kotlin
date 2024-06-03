@@ -79,6 +79,7 @@ class AdminAssesmentFragment : Fragment() {
                         val location = document.getString("location")
                         val email = document.getString("email")
                         val status = document.getString("status") ?: ""
+                        Toast.makeText(context, status.toString(), Toast.LENGTH_SHORT).show()
                         addDocumentToLayout(
                             documentId,
                             fullName,
