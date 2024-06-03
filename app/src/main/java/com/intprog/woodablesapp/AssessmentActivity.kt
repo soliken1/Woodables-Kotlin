@@ -13,6 +13,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import android.text.Editable
+import android.text.TextWatcher
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
+import org.threeten.bp.format.DateTimeParseException
+import com.jakewharton.threetenabp.AndroidThreeTen
 
 class AssessmentActivity : AppCompatActivity() {
 
@@ -31,6 +37,7 @@ class AssessmentActivity : AppCompatActivity() {
     // SharedPreferences instance
     private lateinit var sharedPreferences: SharedPreferences
 
+    private val dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -57,9 +64,34 @@ class AssessmentActivity : AppCompatActivity() {
 
         // Fetch and set user data
         fetchAndSetUserData()
-
+        doaIn.addTextChangedListener(dateTextWatcher)
         sendBtn.setOnClickListener { saveUserData() }
         backBtn.setOnClickListener { finish() }
+    }
+
+    private val dateTextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+        override fun afterTextChanged(s: Editable?) {
+            validateDate(s.toString())
+        }
+    }
+
+    private fun validateDate(dateString: String) {
+        try {
+            val enteredDate = LocalDate.parse(dateString, dateFormatter)
+            val currentDate = LocalDate.now()
+
+            if (enteredDate.isBefore(currentDate)) {
+                doaIn.error = "Date must be today or in the future"
+            } else {
+                doaIn.error = null
+            }
+        } catch (e: DateTimeParseException) {
+            doaIn.error = "Invalid date format. Use MM/dd/yyyy"
+        }
     }
 
     // Method to fetch user data from Firestore and set in EditText fields
@@ -99,6 +131,7 @@ class AssessmentActivity : AppCompatActivity() {
     }
 
     // Method to save user data in Firestore
+    // Method to save user data in Firestore
     private fun saveUserData() {
         val currentUser = mAuth.currentUser
         if (currentUser != null) {
@@ -134,8 +167,11 @@ class AssessmentActivity : AppCompatActivity() {
                     "desc7" to desc7
                 )
 
-                // Use set with the document ID as the user's UID
-                db.collection("assessment").document(uid).set(assessmentData)
+                // Generate a unique document ID
+                val newAssessmentRef = db.collection("assessment").document()
+
+                // Use set with the generated document ID
+                newAssessmentRef.set(assessmentData)
                     .addOnSuccessListener {
                         Toast.makeText(this@AssessmentActivity, "You've successfully applied for Skills Assessment. We'll contact you soon!", Toast.LENGTH_SHORT).show()
                         setResult(RESULT_OK)
@@ -149,7 +185,6 @@ class AssessmentActivity : AppCompatActivity() {
             Toast.makeText(this@AssessmentActivity, "User not logged in", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     // Method to fetch profile descriptions from Firestore
     private fun fetchProfileDescriptions(uid: String, callback: (String?, String?, String?, String?, String?, String?) -> Unit) {

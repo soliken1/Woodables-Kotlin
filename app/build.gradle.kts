@@ -45,6 +45,7 @@ dependencies {
     implementation  ("com.google.firebase:firebase-bom:33.0.0")
     implementation("com.google.firebase:firebase-auth:23.0.0")
     implementation ("androidx.cardview:cardview:1.0.0")
+    implementation ("com.jakewharton.threetenabp:threetenabp:1.3.1")
     implementation ("com.google.firebase:firebase-analytics:22.0.0")
     implementation ("com.google.firebase:firebase-firestore:25.0.0")
     implementation ("com.google.firebase:firebase-storage:21.0.0")

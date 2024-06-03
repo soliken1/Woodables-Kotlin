@@ -79,6 +79,7 @@ class AdminAssesmentFragment : Fragment() {
                         val location = document.getString("location")
                         val email = document.getString("email")
                         val status = document.getString("status") ?: ""
+                        val dateOfAssessment = document.getString("dateOfAssessment")
                         addDocumentToLayout(
                             documentId,
                             fullName,
@@ -90,7 +91,8 @@ class AdminAssesmentFragment : Fragment() {
                             exp_2,
                             location,
                             email,
-                            status
+                            status,
+                            dateOfAssessment
                         )
                     }
                 } else {
@@ -137,6 +139,10 @@ class AdminAssesmentFragment : Fragment() {
                 disableButtons(documentView)
                 scheduleDocumentDeletion(documentId)
                 Toast.makeText(requireContext(), "Document approved.", Toast.LENGTH_SHORT).show()
+
+                // Remove approve button after approval
+                val approveButton: Button = documentView.findViewById(R.id.approveButton)
+                approveButton.visibility = View.GONE
             }
             .addOnFailureListener {
                 Toast.makeText(
@@ -178,7 +184,8 @@ class AdminAssesmentFragment : Fragment() {
         exp_2: String?,
         location: String?,
         email: String?,
-        status: String?
+        status: String?,
+        dateOfAssessment: String?
     ) {
         val inflater = LayoutInflater.from(requireContext())
         val itemView = inflater.inflate(R.layout.admin_item_assessment, assessmentLinearLayout, false)
@@ -189,6 +196,7 @@ class AdminAssesmentFragment : Fragment() {
         val exp1TextView: TextView = itemView.findViewById(R.id.exp1TextView)
         val exp2TextView: TextView = itemView.findViewById(R.id.exp2TextView)
         val locationTextView: TextView = itemView.findViewById(R.id.locationTextView)
+        val dateOfAssessmentTextView: TextView = itemView.findViewById(R.id.dateOfAssessmentTextView)
         val deleteButton: Button = itemView.findViewById(R.id.deleteButton)
         val approveButton: Button = itemView.findViewById(R.id.approveButton)
 
@@ -198,6 +206,7 @@ class AdminAssesmentFragment : Fragment() {
         exp1TextView.text = "Experience 1: $exp_1"
         exp2TextView.text = "Experience 2: $exp_2"
         locationTextView.text = "Location: $location"
+        dateOfAssessmentTextView.text = "Date of Assessment: $dateOfAssessment"
 
         deleteButton.setOnClickListener {
             showDeleteConfirmationDialog(documentId, itemView, email, desc7, fullName)
@@ -208,6 +217,7 @@ class AdminAssesmentFragment : Fragment() {
 
         if ("approved" == status) {
             disableButtons(itemView)
+            approveButton.visibility = View.GONE
         }
 
         assessmentLinearLayout.addView(itemView)
